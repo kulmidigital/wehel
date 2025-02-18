@@ -142,7 +142,7 @@ export function NavBar() {
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <button className='md:hidden p-2 text-white hover:text-[#FFD60A] transition-colors'>
-                <Menu className='w-8 h-8' />
+                <Menu className='w-7 h-7' />
               </button>
             </SheetTrigger>
             <SheetContent
