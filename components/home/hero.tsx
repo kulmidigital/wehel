@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Globe, Stethoscope, Heart } from "lucide-react";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -10,29 +11,94 @@ const fadeIn = {
   transition: { duration: 0.6 },
 };
 
-const stats = [
+const features = [
   {
-    number: "20K+",
-    label: "Patients Served",
-    delay: 0.6,
+    title: "Global Network",
+    icon: Globe,
+    gradient: "from-[#FFD60A] to-[#FF8A0A]",
+    delay: 0.2,
   },
   {
-    number: "98%",
-    label: "Success Rate",
-    delay: 0.7,
+    title: "Smart Care",
+    icon: Stethoscope,
+    gradient: "from-[#0AFFE7] to-[#0A95FF]",
+    delay: 0.3,
   },
   {
-    number: "85%",
-    label: "Cost Savings",
-    delay: 0.8,
+    title: "Patient-Centric",
+    icon: Heart,
+    gradient: "from-[#FF0AE7] to-[#B30AFF]",
+    delay: 0.4,
   },
 ];
+
+// Floating animation for background elements
+const floatingAnimation1 = {
+  initial: { x: 0, y: 0 },
+  animate: {
+    x: [0, 50, -50, 0],
+    y: [0, -30, 30, 0],
+    transition: {
+      x: {
+        duration: 12,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+      y: {
+        duration: 8,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+  },
+};
+
+const floatingAnimation2 = {
+  initial: { x: 0, y: 0 },
+  animate: {
+    x: [0, -40, 40, 0],
+    y: [0, 30, -30, 0],
+    transition: {
+      x: {
+        duration: 10,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+      y: {
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+  },
+};
+
+const floatingAnimation3 = {
+  initial: { x: 0, y: 0 },
+  animate: {
+    x: [0, 30, -20, 0],
+    y: [0, -20, 30, 0],
+    transition: {
+      x: {
+        duration: 9,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+      y: {
+        duration: 7,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+  },
+};
 
 export function Hero() {
   return (
     <div className='relative min-h-screen overflow-hidden bg-[#0A1A2F]'>
-      {/* Background Pattern */}
-      <div className='absolute inset-0'>
+      {/* Animated Background Elements */}
+      <div className='absolute inset-0 overflow-hidden'>
+        {/* Original grid pattern */}
         <div
           className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:3rem_3rem]'
           style={{
@@ -42,6 +108,46 @@ export function Hero() {
               "radial-gradient(ellipse 80% 50% at 50% 0%, black 70%, transparent 110%)",
           }}
         />
+
+        {/* Floating orbs */}
+        <motion.div
+          variants={floatingAnimation1}
+          initial='initial'
+          animate='animate'
+          className='absolute top-1/4 left-1/4 w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-[#FFD60A] rounded-full blur-[20px] md:blur-[30px] lg:blur-[40px] opacity-10'
+        />
+        <motion.div
+          variants={floatingAnimation2}
+          initial='initial'
+          animate='animate'
+          className='absolute top-1/2 right-1/4 w-6 h-6 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-blue-400 rounded-full blur-[15px] md:blur-[25px] lg:blur-[30px] opacity-10'
+        />
+        <motion.div
+          variants={floatingAnimation3}
+          initial='initial'
+          animate='animate'
+          className='absolute bottom-1/3 left-1/2 w-7 h-7 md:w-11 md:h-11 lg:w-14 lg:h-14 bg-purple-400 rounded-full blur-[18px] md:blur-[28px] lg:blur-[35px] opacity-10'
+        />
+
+        {/* Animated gradient rings */}
+        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+          <motion.div
+            animate={{
+              rotate: 360,
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className='w-[800px] h-[800px] border border-white/5 rounded-full'
+            style={{
+              background:
+                "radial-gradient(circle, transparent 60%, rgba(255,214,10,0.05) 70%)",
+            }}
+          />
+        </div>
       </div>
 
       {/* Content */}
@@ -103,24 +209,60 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          {/* Stats */}
-          <div className='grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto'>
-            {stats.map((stat) => (
+          {/* Features Grid */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className='grid grid-cols-1 md:grid-cols-3 gap-6 mt-16'>
+            {features.map((feature, index) => (
               <motion.div
-                key={stat.number}
+                key={feature.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: stat.delay, duration: 0.6 }}
-                className='relative text-center'>
-                <span className='block text-6xl font-medium text-white mb-2'>
-                  {stat.number}
-                </span>
-                <span className='block text-sm text-white/60'>
-                  {stat.label}
-                </span>
+                transition={{ delay: feature.delay }}
+                whileHover={{
+                  scale: 1.02,
+                  transition: { duration: 0.2 },
+                }}
+                className='group relative'>
+                {/* Gradient background */}
+                <div
+                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${feature.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-300`}
+                />
+
+                {/* Content */}
+                <div className='relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-[140px] overflow-hidden flex flex-col items-center justify-center'>
+                  <div className='relative z-10 text-center'>
+                    <div className='mb-4 flex justify-center'>
+                      <feature.icon
+                        className={`w-8 h-8 group-hover:scale-110 transition-transform duration-300 ${
+                          feature.gradient.includes("FFD60A")
+                            ? "text-[#FFD60A]"
+                            : feature.gradient.includes("0AFFE7")
+                            ? "text-[#0AFFE7]"
+                            : "text-[#FF0AE7]"
+                        }`}
+                      />
+                    </div>
+                    <h3 className='text-2xl font-medium text-white group-hover:text-[#FFD60A] transition-colors'>
+                      {feature.title}
+                    </h3>
+                  </div>
+
+                  {/* Decorative elements */}
+                  <div
+                    className='absolute -right-6 -bottom-6 w-24 h-24 rounded-full bg-gradient-to-br opacity-20 group-hover:opacity-40 transition-all duration-300 group-hover:scale-110'
+                    style={{
+                      backgroundImage: `linear-gradient(to bottom right, ${
+                        feature.gradient.split(" ")[1]
+                      }, ${feature.gradient.split(" ")[3]})`,
+                    }}
+                  />
+                </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

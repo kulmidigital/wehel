@@ -48,8 +48,14 @@ const regions = [
   },
 ];
 
+interface Marker {
+  coordinates: [number, number];
+  name: string;
+  type: "base" | "africa" | "global";
+}
+
 // Updated markers with African network
-const markers = [
+const markers: Marker[] = [
   // Base
   { coordinates: [36.8219, -1.2921], name: "Kenya", type: "base" }, // Kenya (Base)
 
