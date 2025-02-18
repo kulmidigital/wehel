@@ -22,10 +22,6 @@ const navigation_links = [
     title: "About Us",
     href: "/about",
   },
-  {
-    title: "Services",
-    href: "/services",
-  },
 ];
 
 const join_us_links = [
@@ -53,7 +49,7 @@ const join_us_links = [
 
 export function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,8 +65,8 @@ export function NavBar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-[#0A1A2F]/80 backdrop-blur-lg border-b border-white/10 py-4"
-          : "bg-transparent py-6"
+          ? "bg-[#0A1A2F]/80 backdrop-blur-lg border-b border-white/10 py-3"
+          : "bg-transparent py-4"
       )}>
       <nav className='container px-6 mx-auto'>
         <div className='flex items-center justify-between'>
@@ -142,30 +138,24 @@ export function NavBar() {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className='md:hidden p-2 text-white hover:text-[#FFD60A] transition-colors'>
-            <Menu className='w-8 h-8' />
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className='md:hidden mt-4'>
-              <nav className='flex flex-col gap-6'>
+          {/* Mobile Menu */}
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+            <SheetTrigger asChild>
+              <button className='md:hidden p-2 text-white hover:text-[#FFD60A] transition-colors'>
+                <Menu className='w-8 h-8' />
+              </button>
+            </SheetTrigger>
+            <SheetContent
+              side='right'
+              className='bg-[#0A1A2F] border-white/10 p-6'>
+              <nav
+                className='flex flex-col gap-6'
+                onClick={() => setIsSheetOpen(false)}>
                 {navigation_links.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className='text-lg font-medium text-white/80 hover:text-white transition-colors'
-                    onClick={() => setIsOpen(false)}>
+                    className='text-lg font-medium text-white/80 hover:text-white transition-colors'>
                     {link.title}
                   </Link>
                 ))}
@@ -178,8 +168,7 @@ export function NavBar() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className='block group'
-                        onClick={() => setIsOpen(false)}>
+                        className='block group'>
                         <div className='text-white/90 group-hover:text-[#FFD60A] transition-colors'>
                           {link.title}
                         </div>
@@ -191,24 +180,18 @@ export function NavBar() {
                   <Button
                     className='w-full bg-transparent border border-white/10 text-white hover:bg-white/5'
                     asChild>
-                    <Link
-                      href='/request-invite'
-                      onClick={() => setIsOpen(false)}>
-                      Request Invite
-                    </Link>
+                    <Link href='/request-invite'>Request Invite</Link>
                   </Button>
                   <Button
                     className='w-full bg-[#FFD60A] text-[#0A1A2F] hover:bg-[#FFD60A]/90'
                     asChild>
-                    <Link href='/contact' onClick={() => setIsOpen(false)}>
-                      Contact Us
-                    </Link>
+                    <Link href='/contact'>Contact Us</Link>
                   </Button>
                 </div>
               </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </SheetContent>
+          </Sheet>
+        </div>
       </nav>
     </header>
   );
