@@ -1,34 +1,35 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+import { NavBar } from "@/components/layout/nav_bar";
+import { Footer } from "@/components/layout/footer";
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-bricolage",
 });
 
 export const metadata: Metadata = {
-  title: "Wehel Global Services",
-  description: "Transforming Medical Journeys with Excellence",
+  title: "Wehel - Global Medical Tourism Services",
+  description:
+    "Experience seamless healthcare access worldwide with personalized support, transparent pricing, and comprehensive medical tourism services.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang='en' className={bricolage.variable}>
+      <body className={`${bricolage.className} antialiased overflow-x-hidden`}>
+        <div className='relative min-h-screen'>
+          <NavBar />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
