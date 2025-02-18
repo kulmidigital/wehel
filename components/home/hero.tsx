@@ -39,63 +39,54 @@ const features = [
   },
 ];
 
-// Floating animation for background elements
+// Optimized floating animation for background elements
 const floatingAnimation1 = {
-  initial: { x: 0, y: 0 },
+  initial: { transform: "translate(0, 0)" },
   animate: {
-    x: [0, 50, -50, 0],
-    y: [0, -30, 30, 0],
+    transform: [
+      "translate(0, 0)",
+      "translate(30px, -20px)",
+      "translate(-20px, 15px)",
+      "translate(0, 0)",
+    ],
     transition: {
-      x: {
-        duration: 12,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-      y: {
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
+      duration: 20,
+      repeat: Infinity,
+      ease: "linear",
     },
   },
 };
 
 const floatingAnimation2 = {
-  initial: { x: 0, y: 0 },
+  initial: { transform: "translate(0, 0)" },
   animate: {
-    x: [0, -40, 40, 0],
-    y: [0, 30, -30, 0],
+    transform: [
+      "translate(0, 0)",
+      "translate(-25px, 20px)",
+      "translate(25px, -15px)",
+      "translate(0, 0)",
+    ],
     transition: {
-      x: {
-        duration: 10,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-      y: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
+      duration: 18,
+      repeat: Infinity,
+      ease: "linear",
     },
   },
 };
 
 const floatingAnimation3 = {
-  initial: { x: 0, y: 0 },
+  initial: { transform: "translate(0, 0)" },
   animate: {
-    x: [0, 30, -20, 0],
-    y: [0, -20, 30, 0],
+    transform: [
+      "translate(0, 0)",
+      "translate(20px, -15px)",
+      "translate(-15px, 20px)",
+      "translate(0, 0)",
+    ],
     transition: {
-      x: {
-        duration: 9,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-      y: {
-        duration: 7,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
+      duration: 16,
+      repeat: Infinity,
+      ease: "linear",
     },
   },
 };
@@ -149,27 +140,27 @@ export function Hero() {
           }}
         />
 
-        {/* Floating orbs */}
+        {/* Floating orbs - Reduced size and blur on mobile */}
         <motion.div
           variants={floatingAnimation1}
           initial='initial'
           animate='animate'
-          className='absolute top-1/4 left-1/4 w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-[#FFD60A] rounded-full blur-[20px] md:blur-[30px] lg:blur-[40px] opacity-10'
+          className='absolute top-1/4 left-1/4 w-6 h-6 md:w-12 md:h-12 bg-[#FFD60A] rounded-full blur-[15px] md:blur-[30px] opacity-10'
         />
         <motion.div
           variants={floatingAnimation2}
           initial='initial'
           animate='animate'
-          className='absolute top-1/2 right-1/4 w-6 h-6 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-blue-400 rounded-full blur-[15px] md:blur-[25px] lg:blur-[30px] opacity-10'
+          className='absolute top-1/2 right-1/4 w-4 h-4 md:w-10 md:h-10 bg-blue-400 rounded-full blur-[12px] md:blur-[25px] opacity-10'
         />
         <motion.div
           variants={floatingAnimation3}
           initial='initial'
           animate='animate'
-          className='absolute bottom-1/3 left-1/2 w-7 h-7 md:w-11 md:h-11 lg:w-14 lg:h-14 bg-purple-400 rounded-full blur-[18px] md:blur-[28px] lg:blur-[35px] opacity-10'
+          className='absolute bottom-1/3 left-1/2 w-5 h-5 md:w-11 md:h-11 bg-purple-400 rounded-full blur-[14px] md:blur-[28px] opacity-10'
         />
 
-        {/* Bottom left gradient orb to blend with Features section */}
+        {/* Bottom left gradient orb */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
@@ -177,19 +168,26 @@ export function Hero() {
           className='absolute -bottom-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20'
         />
 
-        {/* Animated gradient rings */}
-        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+        {/* Simplified gradient ring - reduced animation complexity */}
+        <div className='absolute top-[30%] sm:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
           <motion.div
             animate={{
               rotate: 360,
-              scale: [1, 1.1, 1],
+              scale: [1, 1.05, 1],
             }}
             transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear",
+              rotate: {
+                duration: 30,
+                repeat: Infinity,
+                ease: "linear",
+              },
+              scale: {
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
             }}
-            className='w-[800px] h-[800px] border border-white/5 rounded-full'
+            className='w-[280px] sm:w-[400px] md:w-[600px] lg:w-[800px] h-[280px] sm:h-[400px] md:h-[600px] lg:h-[800px] border border-white/5 rounded-full'
             style={{
               background:
                 "radial-gradient(circle, transparent 60%, rgba(255,214,10,0.05) 70%)",
@@ -203,16 +201,18 @@ export function Hero() {
         <div className='max-w-4xl mx-auto text-center'>
           {/* Announcement Badge */}
           <motion.div
-            {...fadeIn}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
             className='inline-flex mb-8 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-sm text-white/80'>
             Transforming Healthcare Access Globally
           </motion.div>
 
-          {/* Main Heading */}
+          {/* Main Heading - Simplified animations */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className='mb-8 text-4xl font-medium tracking-tight text-white md:text-6xl lg:text-7xl'>
             Your Gateway to{" "}
             <span className='relative inline-block'>
@@ -220,28 +220,29 @@ export function Hero() {
                 Global Healthcare
               </span>
               <motion.span
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className='absolute bottom-2 left-0 h-3 w-full -rotate-2 bg-[#FFD60A]/10'
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className='absolute bottom-2 left-0 h-3 w-full origin-left -rotate-2 bg-[#FFD60A]/10'
               />
             </span>
           </motion.h1>
 
-          {/* Description */}
+          {/* Description - Simplified animation */}
           <motion.p
-            {...fadeIn}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className='mb-12 text-lg text-white/60 max-w-2xl mx-auto'>
             Experience world-class medical care with personalized support every
             step of the way. Your health journey begins here.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Simplified animation */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className='flex flex-col sm:flex-row items-center justify-center gap-4 mb-20'>
             <Dialog>
               <DialogTrigger asChild>
