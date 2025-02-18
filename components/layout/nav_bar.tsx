@@ -30,27 +30,22 @@ const join_us_links = [
   {
     title: "Hospitals",
     href: "/join-us/hospital",
-    description: "Partner with us as a healthcare provider.",
   },
   {
     title: "Financial Institutions & Insurance",
     href: "/join-us/insurance",
-    description: "Collaborate on healthcare financing solutions.",
   },
   {
     title: "Affiliate Doctors",
     href: "/join-us/doctors",
-    description: "Join our network of medical professionals.",
   },
   {
     title: "Government Institutions",
     href: "/join-us/government",
-    description: "Establish public-private healthcare partnerships.",
   },
   {
     title: "Travel Agencies",
     href: "/join-us/travel-agency",
-    description: "Partner in medical tourism services.",
   },
 ];
 
@@ -129,14 +124,9 @@ export function NavBar() {
                     <Link
                       href={link.href}
                       className='w-full py-3 px-4 text-left group'>
-                      <div className='space-y-1'>
-                        <p className='text-white text-base font-medium group-hover:text-[#FFD60A] transition-colors'>
-                          {link.title}
-                        </p>
-                        <p className='text-white/60 text-xs font-normal'>
-                          {link.description}
-                        </p>
-                      </div>
+                      <p className='text-white text-base font-medium group-hover:text-[#FFD60A] transition-colors'>
+                        {link.title}
+                      </p>
                     </Link>
                   </DropdownMenuItem>
                 ))}
@@ -192,9 +182,6 @@ export function NavBar() {
                       onClick={() => setIsOpen(false)}>
                       <div className='text-white/90 group-hover:text-[#FFD60A] transition-colors'>
                         {link.title}
-                      </div>
-                      <div className='text-sm text-white/60 group-hover:text-white/80 transition-colors mt-1'>
-                        {link.description}
                       </div>
                     </Link>
                   ))}

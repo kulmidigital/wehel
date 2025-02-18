@@ -45,38 +45,7 @@ const formSchema = z.object({
   currentPractice: z.string().min(2, "Current practice details are required"),
   languages: z.string().min(2, "Languages spoken are required"),
   availability: z.string().min(2, "Availability details are required"),
-
-  // Documents
-  medicalLicense: z.any().optional(),
-  certifications: z.any().optional(),
 });
-
-const steps = [
-  {
-    id: "personal",
-    name: "Personal Information",
-    fields: ["fullName", "email", "phone", "location"],
-    icon: User,
-  },
-  {
-    id: "professional",
-    name: "Professional Details",
-    fields: ["specialization", "experience", "qualifications", "licenseNumber"],
-    icon: GraduationCap,
-  },
-  {
-    id: "practice",
-    name: "Practice Information",
-    fields: ["currentPractice", "languages", "availability"],
-    icon: Stethoscope,
-  },
-  {
-    id: "documents",
-    name: "Documentation",
-    fields: ["medicalLicense", "certifications"],
-    icon: Upload,
-  },
-];
 
 // Step-specific schemas
 const stepSchemas = {
@@ -97,8 +66,28 @@ const stepSchemas = {
     languages: z.string().min(2, "Languages spoken are required"),
     availability: z.string().min(2, "Availability details are required"),
   }),
-  3: z.object({}).optional(),
 };
+
+const steps = [
+  {
+    id: "personal",
+    name: "Personal Info",
+    fields: ["fullName", "email", "phone", "location"],
+    icon: User,
+  },
+  {
+    id: "professional",
+    name: "Professional Details",
+    fields: ["specialization", "experience", "qualifications", "licenseNumber"],
+    icon: GraduationCap,
+  },
+  {
+    id: "practice",
+    name: "Practice Information",
+    fields: ["currentPractice", "languages", "availability"],
+    icon: Stethoscope,
+  },
+];
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -238,15 +227,17 @@ export function DoctorsForm() {
               name='fullName'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Full Name</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Full Name
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Dr. John Doe'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -255,16 +246,18 @@ export function DoctorsForm() {
               name='email'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Email Address</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Email Address
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type='email'
                       placeholder='doctor@example.com'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -273,16 +266,18 @@ export function DoctorsForm() {
               name='phone'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Phone Number</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Phone Number
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type='tel'
                       placeholder='+1234567890'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -291,15 +286,17 @@ export function DoctorsForm() {
               name='location'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Location</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Location
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='City, Country'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -318,17 +315,17 @@ export function DoctorsForm() {
               name='specialization'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Medical Specialization
                   </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='e.g., Cardiology, Orthopedics'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -337,18 +334,18 @@ export function DoctorsForm() {
               name='experience'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Years of Experience
                   </FormLabel>
                   <FormControl>
                     <Input
                       type='number'
                       placeholder='Years of medical practice'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -357,18 +354,20 @@ export function DoctorsForm() {
               name='qualifications'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Qualifications</FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Qualifications
+                  </FormLabel>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     List your medical degrees and certifications
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., MD, MBBS, Board Certifications'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -377,17 +376,17 @@ export function DoctorsForm() {
               name='licenseNumber'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Medical License Number
                   </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Your medical license/registration number'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -406,18 +405,20 @@ export function DoctorsForm() {
               name='currentPractice'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Current Practice</FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Current Practice
+                  </FormLabel>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     Describe your current practice setting and affiliations
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Private Practice, Hospital Affiliation'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -426,15 +427,17 @@ export function DoctorsForm() {
               name='languages'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Languages Spoken</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Languages Spoken
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='e.g., English, Spanish, Arabic'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -443,60 +446,23 @@ export function DoctorsForm() {
               name='availability'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Availability</FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Availability
+                  </FormLabel>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     Describe your availability for international consultations
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Available for virtual consultations, in-person visits'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
-          </motion.div>
-        );
-
-      case 3:
-        return (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className='space-y-6'>
-            <div className='bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10'>
-              <h3 className='text-lg font-medium text-white mb-4'>
-                Required Documents
-              </h3>
-              <ul className='space-y-4 text-white/60'>
-                <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
-                  <div>
-                    <p className='text-white'>Medical License</p>
-                    <p className='text-sm'>
-                      Current medical license or registration certificate
-                    </p>
-                  </div>
-                </li>
-                <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
-                  <div>
-                    <p className='text-white'>Professional Certifications</p>
-                    <p className='text-sm'>
-                      Relevant specialty certifications and qualifications
-                    </p>
-                  </div>
-                </li>
-              </ul>
-              <p className='mt-4 text-sm text-white/60'>
-                Document upload functionality will be implemented in the next
-                phase
-              </p>
-            </div>
           </motion.div>
         );
 
@@ -537,7 +503,7 @@ export function DoctorsForm() {
                     />
                   </div>
                   <div
-                    className={`absolute -bottom-6 left-1/2 -translate-x-1/2 text-sm whitespace-nowrap ${
+                    className={`absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] md:text-sm whitespace-nowrap ${
                       index <= currentStep ? "text-white" : "text-white/40"
                     }`}>
                     {step.name}
@@ -575,7 +541,7 @@ export function DoctorsForm() {
               <Button
                 type='button'
                 variant='outline'
-                className='bg-white/5 text-white border-white/10 hover:bg-white/10 hover:text-white'
+                className='bg-white/5 text-white border-white/10 hover:bg-white/10 hover:text-white px-3 md:px-4 text-[11px] md:text-base'
                 onClick={handlePrevious}
                 disabled={currentStep === 0}>
                 Previous

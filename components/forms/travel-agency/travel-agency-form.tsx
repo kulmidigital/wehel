@@ -45,10 +45,6 @@ const formSchema = z.object({
   destinations: z.string().min(2, "Destinations are required"),
   services: z.string().min(2, "Services are required"),
   experience: z.string().min(2, "Medical tourism experience is required"),
-
-  // Documents
-  businessLicense: z.any().optional(),
-  insuranceCertificate: z.any().optional(),
 });
 
 const steps = [
@@ -69,12 +65,6 @@ const steps = [
     name: "Service Details",
     fields: ["destinations", "services", "experience"],
     icon: Plane,
-  },
-  {
-    id: "documents",
-    name: "Documentation",
-    fields: ["businessLicense", "insuranceCertificate"],
-    icon: Upload,
   },
 ];
 
@@ -97,7 +87,6 @@ const stepSchemas = {
     services: z.string().min(2, "Services are required"),
     experience: z.string().min(2, "Medical tourism experience is required"),
   }),
-  3: z.object({}).optional(),
 };
 
 type FormValues = z.infer<typeof formSchema>;
@@ -238,15 +227,17 @@ export function TravelAgencyForm() {
               name='agencyName'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Agency Name</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Agency Name
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Travel Agency Name'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -255,15 +246,17 @@ export function TravelAgencyForm() {
               name='website'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Website</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Website
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='www.youragency.com'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -272,15 +265,17 @@ export function TravelAgencyForm() {
               name='location'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Location</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Location
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='City, Country'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -289,18 +284,18 @@ export function TravelAgencyForm() {
               name='yearsInBusiness'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Years in Business
                   </FormLabel>
                   <FormControl>
                     <Input
                       type='number'
                       placeholder='Number of years'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -319,17 +314,17 @@ export function TravelAgencyForm() {
               name='contactName'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Contact Person Name
                   </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Full name'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -338,15 +333,17 @@ export function TravelAgencyForm() {
               name='contactPosition'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Position</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Position
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='e.g., Medical Tourism Manager'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -355,16 +352,18 @@ export function TravelAgencyForm() {
               name='contactEmail'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Email Address</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Email Address
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type='email'
                       placeholder='contact@agency.com'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -373,16 +372,18 @@ export function TravelAgencyForm() {
               name='contactPhone'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Phone Number</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Phone Number
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type='tel'
                       placeholder='+1234567890'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -401,20 +402,20 @@ export function TravelAgencyForm() {
               name='destinations'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Destinations Covered
                   </FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     List the destinations where you operate or plan to operate
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Thailand, India, Turkey'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -423,18 +424,20 @@ export function TravelAgencyForm() {
               name='services'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Services Offered</FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Services Offered
+                  </FormLabel>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     Describe your medical tourism services
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Travel arrangements, Medical appointments, Translation services'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -443,62 +446,23 @@ export function TravelAgencyForm() {
               name='experience'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Medical Tourism Experience
                   </FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     Describe your experience in medical tourism
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Past medical tourism projects, number of patients served'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
-          </motion.div>
-        );
-
-      case 3:
-        return (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className='space-y-6'>
-            <div className='bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10'>
-              <h3 className='text-lg font-medium text-white mb-4'>
-                Required Documents
-              </h3>
-              <ul className='space-y-4 text-white/60'>
-                <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
-                  <div>
-                    <p className='text-white'>Business License</p>
-                    <p className='text-sm'>
-                      Valid travel agency license or registration
-                    </p>
-                  </div>
-                </li>
-                <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
-                  <div>
-                    <p className='text-white'>Insurance Certificate</p>
-                    <p className='text-sm'>
-                      Professional liability insurance documentation
-                    </p>
-                  </div>
-                </li>
-              </ul>
-              <p className='mt-4 text-sm text-white/60'>
-                Document upload functionality will be implemented in the next
-                phase
-              </p>
-            </div>
           </motion.div>
         );
 
@@ -539,7 +503,7 @@ export function TravelAgencyForm() {
                     />
                   </div>
                   <div
-                    className={`absolute -bottom-6 left-1/2 -translate-x-1/2 text-sm whitespace-nowrap ${
+                    className={`absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] md:text-sm whitespace-nowrap ${
                       index <= currentStep ? "text-white" : "text-white/40"
                     }`}>
                     {step.name}
@@ -577,7 +541,7 @@ export function TravelAgencyForm() {
               <Button
                 type='button'
                 variant='outline'
-                className='bg-white/5 text-white border-white/10 hover:bg-white/10 hover:text-white'
+                className='bg-white/5 text-white border-white/10 hover:bg-white/10 hover:text-white px-3 md:px-4 text-[11px] md:text-base'
                 onClick={handlePrevious}
                 disabled={currentStep === 0}>
                 Previous

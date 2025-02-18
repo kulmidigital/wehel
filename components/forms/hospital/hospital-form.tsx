@@ -37,10 +37,6 @@ const formSchema = z.object({
   bedCount: z.string().optional(),
   facilities: z.string().optional(),
   internationalServices: z.string().optional(),
-
-  // Documents
-  registrationDocs: z.any().optional(),
-  accreditationCerts: z.any().optional(),
 });
 
 // Step-specific schemas
@@ -64,7 +60,6 @@ const stepSchemas = {
       .string()
       .min(2, "International services are required"),
   }),
-  3: z.object({}).optional(),
 };
 
 type FormValues = z.infer<typeof formSchema>;
@@ -72,7 +67,7 @@ type FormValues = z.infer<typeof formSchema>;
 const steps = [
   {
     id: "hospital",
-    name: "Hospital Information",
+    name: "Hospital Info",
     fields: ["hospitalName", "location", "accreditations", "specializations"],
     icon: Building2,
   },
@@ -87,12 +82,6 @@ const steps = [
     name: "Facility Details",
     fields: ["bedCount", "facilities", "internationalServices"],
     icon: MapPin,
-  },
-  {
-    id: "documents",
-    name: "Documentation",
-    fields: ["registrationDocs", "accreditationCerts"],
-    icon: Upload,
   },
 ];
 
@@ -232,15 +221,17 @@ export function HospitalForm() {
               name='hospitalName'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Hospital Name</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Hospital Name
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Enter hospital name'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -249,15 +240,17 @@ export function HospitalForm() {
               name='location'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Location</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Location
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='City, Country'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -266,15 +259,17 @@ export function HospitalForm() {
               name='accreditations'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Accreditations</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Accreditations
+                  </FormLabel>
                   <FormControl>
                     <Textarea
                       placeholder='List your hospital accreditations'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -283,15 +278,17 @@ export function HospitalForm() {
               name='specializations'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Specializations</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Specializations
+                  </FormLabel>
                   <FormControl>
                     <Textarea
                       placeholder='List your medical specializations'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -310,17 +307,17 @@ export function HospitalForm() {
               name='contactName'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Contact Person Name
                   </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Full name'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -329,16 +326,18 @@ export function HospitalForm() {
               name='contactEmail'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Email Address</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Email Address
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type='email'
                       placeholder='email@hospital.com'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -347,16 +346,18 @@ export function HospitalForm() {
               name='contactPhone'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Phone Number</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Phone Number
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type='tel'
                       placeholder='+1234567890'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -365,15 +366,17 @@ export function HospitalForm() {
               name='contactPosition'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Position</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Position
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Job title'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -392,16 +395,18 @@ export function HospitalForm() {
               name='bedCount'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Number of Beds</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Number of Beds
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type='number'
                       placeholder='Total bed capacity'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -410,20 +415,20 @@ export function HospitalForm() {
               name='facilities'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Available Facilities
                   </FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     List major facilities, equipment, and departments
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Operating Rooms, ICU, Diagnostic Imaging...'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -432,64 +437,23 @@ export function HospitalForm() {
               name='internationalServices'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     International Patient Services
                   </FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     Describe services specifically for international patients
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Language Support, Travel Assistance...'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
-          </motion.div>
-        );
-
-      case 3:
-        return (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className='space-y-6'>
-            <div className='bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10'>
-              <h3 className='text-lg font-medium text-white mb-4'>
-                Required Documents
-              </h3>
-              <ul className='space-y-4 text-white/60'>
-                <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
-                  <div>
-                    <p className='text-white'>
-                      Hospital Registration Documents
-                    </p>
-                    <p className='text-sm'>
-                      Official registration and licensing documents
-                    </p>
-                  </div>
-                </li>
-                <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
-                  <div>
-                    <p className='text-white'>Accreditation Certificates</p>
-                    <p className='text-sm'>
-                      National and international accreditation proof
-                    </p>
-                  </div>
-                </li>
-              </ul>
-              <p className='mt-4 text-sm text-white/60'>
-                Document upload functionality will be implemented in the next
-                phase
-              </p>
-            </div>
           </motion.div>
         );
 
@@ -530,7 +494,7 @@ export function HospitalForm() {
                     />
                   </div>
                   <div
-                    className={`absolute -bottom-6 left-1/2 -translate-x-1/2 text-sm whitespace-nowrap ${
+                    className={`absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] md:text-sm whitespace-nowrap ${
                       index <= currentStep ? "text-white" : "text-white/40"
                     }`}>
                     {step.name}
@@ -568,7 +532,7 @@ export function HospitalForm() {
               <Button
                 type='button'
                 variant='outline'
-                className='bg-white/5 text-white border-white/10 hover:bg-white/10 hover:text-white'
+                className='bg-white/5 text-white border-white/10 hover:bg-white/10 hover:text-white px-3 md:px-4 text-[11px] md:text-base'
                 onClick={handlePrevious}
                 disabled={currentStep === 0}>
                 Previous

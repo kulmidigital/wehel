@@ -31,24 +31,20 @@ import { create } from "zustand";
 const formSchema = z.object({
   // Institution Information
   institutionName: z.string().min(2, "Institution name is required"),
-  department: z.string().min(2, "Department name is required"),
+  department: z.string().min(2, "Department is required"),
   jurisdiction: z.string().min(2, "Jurisdiction is required"),
   type: z.string().min(2, "Institution type is required"),
 
-  // Contact Information
-  contactName: z.string().min(2, "Contact name is required"),
-  contactTitle: z.string().min(2, "Contact title is required"),
-  contactEmail: z.string().email("Valid email is required"),
-  contactPhone: z.string().min(10, "Valid phone number is required"),
+  // Contact Person
+  contactName: z.string().optional(),
+  contactTitle: z.string().optional(),
+  contactEmail: z.string().optional(),
+  contactPhone: z.string().optional(),
 
   // Partnership Details
-  objectives: z.string().min(2, "Partnership objectives are required"),
-  scope: z.string().min(2, "Partnership scope is required"),
-  resources: z.string().min(2, "Available resources are required"),
-
-  // Documents
-  authorizationLetter: z.any().optional(),
-  regulatoryDocs: z.any().optional(),
+  objectives: z.string().optional(),
+  scope: z.string().optional(),
+  resources: z.string().optional(),
 });
 
 const steps = [
@@ -60,7 +56,7 @@ const steps = [
   },
   {
     id: "contact",
-    name: "Contact Information",
+    name: "Contact Info",
     fields: ["contactName", "contactTitle", "contactEmail", "contactPhone"],
     icon: Users,
   },
@@ -70,25 +66,19 @@ const steps = [
     fields: ["objectives", "scope", "resources"],
     icon: Briefcase,
   },
-  {
-    id: "documents",
-    name: "Documentation",
-    fields: ["authorizationLetter", "regulatoryDocs"],
-    icon: Upload,
-  },
 ];
 
 // Step-specific schemas
 const stepSchemas = {
   0: z.object({
     institutionName: z.string().min(2, "Institution name is required"),
-    department: z.string().min(2, "Department name is required"),
+    department: z.string().min(2, "Department is required"),
     jurisdiction: z.string().min(2, "Jurisdiction is required"),
     type: z.string().min(2, "Institution type is required"),
   }),
   1: z.object({
     contactName: z.string().min(2, "Contact name is required"),
-    contactTitle: z.string().min(2, "Contact title is required"),
+    contactTitle: z.string().min(2, "Official title is required"),
     contactEmail: z.string().email("Valid email is required"),
     contactPhone: z.string().min(10, "Valid phone number is required"),
   }),
@@ -97,7 +87,6 @@ const stepSchemas = {
     scope: z.string().min(2, "Partnership scope is required"),
     resources: z.string().min(2, "Available resources are required"),
   }),
-  3: z.object({}).optional(),
 };
 
 type FormValues = z.infer<typeof formSchema>;
@@ -238,15 +227,17 @@ export function GovernmentForm() {
               name='institutionName'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Institution Name</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Institution Name
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Government Institution Name'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -255,15 +246,17 @@ export function GovernmentForm() {
               name='department'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Department</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Department
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='e.g., Ministry of Health'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -272,15 +265,17 @@ export function GovernmentForm() {
               name='jurisdiction'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Jurisdiction</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Jurisdiction
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='e.g., National, State/Province'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -289,15 +284,17 @@ export function GovernmentForm() {
               name='type'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Institution Type</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Institution Type
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='e.g., Federal Agency, State Department'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -316,17 +313,17 @@ export function GovernmentForm() {
               name='contactName'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Contact Person Name
                   </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Full name'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -335,15 +332,17 @@ export function GovernmentForm() {
               name='contactTitle'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Official Title</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Official Title
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='e.g., Director of Healthcare Services'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -352,16 +351,18 @@ export function GovernmentForm() {
               name='contactEmail'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Official Email</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Official Email
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type='email'
                       placeholder='official@government.org'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -370,16 +371,18 @@ export function GovernmentForm() {
               name='contactPhone'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Contact Number</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Contact Number
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type='tel'
                       placeholder='+1234567890'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -398,20 +401,20 @@ export function GovernmentForm() {
               name='objectives'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Partnership Objectives
                   </FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     Describe your goals for this healthcare partnership
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Improve healthcare access, Enhance medical tourism'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -420,20 +423,20 @@ export function GovernmentForm() {
               name='scope'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Partnership Scope
                   </FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     Define the scope and scale of the proposed collaboration
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Geographic coverage, target population'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -442,62 +445,23 @@ export function GovernmentForm() {
               name='resources'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Available Resources
                   </FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     Outline resources that can be committed to this partnership
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Budget allocation, infrastructure support'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
-          </motion.div>
-        );
-
-      case 3:
-        return (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className='space-y-6'>
-            <div className='bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10'>
-              <h3 className='text-lg font-medium text-white mb-4'>
-                Required Documents
-              </h3>
-              <ul className='space-y-4 text-white/60'>
-                <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
-                  <div>
-                    <p className='text-white'>Authorization Letter</p>
-                    <p className='text-sm'>
-                      Official letter authorizing partnership exploration
-                    </p>
-                  </div>
-                </li>
-                <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
-                  <div>
-                    <p className='text-white'>Regulatory Documentation</p>
-                    <p className='text-sm'>
-                      Relevant regulatory frameworks and compliance documents
-                    </p>
-                  </div>
-                </li>
-              </ul>
-              <p className='mt-4 text-sm text-white/60'>
-                Document upload functionality will be implemented in the next
-                phase
-              </p>
-            </div>
           </motion.div>
         );
 
@@ -538,7 +502,7 @@ export function GovernmentForm() {
                     />
                   </div>
                   <div
-                    className={`absolute -bottom-6 left-1/2 -translate-x-1/2 text-sm whitespace-nowrap ${
+                    className={`absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] md:text-sm whitespace-nowrap ${
                       index <= currentStep ? "text-white" : "text-white/40"
                     }`}>
                     {step.name}
@@ -576,7 +540,7 @@ export function GovernmentForm() {
               <Button
                 type='button'
                 variant='outline'
-                className='bg-white/5 text-white border-white/10 hover:bg-white/10 hover:text-white'
+                className='bg-white/5 text-white border-white/10 hover:bg-white/10 hover:text-white px-3 md:px-4 text-[11px] md:text-base'
                 onClick={handlePrevious}
                 disabled={currentStep === 0}>
                 Previous

@@ -37,16 +37,12 @@ const formSchema = z.object({
   servicesOffered: z.string().optional(),
   coverageAreas: z.string().optional(),
   internationalNetwork: z.string().optional(),
-
-  // Documents
-  licenseDocs: z.any().optional(),
-  companyProfile: z.any().optional(),
 });
 
 const steps = [
   {
     id: "company",
-    name: "Company Information",
+    name: "Company Info",
     fields: ["companyName", "companyType", "location", "website"],
     icon: Building2,
   },
@@ -61,12 +57,6 @@ const steps = [
     name: "Services & Coverage",
     fields: ["servicesOffered", "coverageAreas", "internationalNetwork"],
     icon: Globe2,
-  },
-  {
-    id: "documents",
-    name: "Documentation",
-    fields: ["licenseDocs", "companyProfile"],
-    icon: Upload,
   },
 ];
 
@@ -232,15 +222,17 @@ export function InsuranceForm() {
               name='companyName'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Company Name</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Company Name
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Enter company name'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -249,15 +241,17 @@ export function InsuranceForm() {
               name='companyType'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Company Type</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Company Type
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='e.g., Insurance Provider, Financial Institution'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -266,15 +260,17 @@ export function InsuranceForm() {
               name='location'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Location</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Location
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='City, Country'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -283,15 +279,17 @@ export function InsuranceForm() {
               name='website'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Website</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Website
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='https://www.example.com'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -310,17 +308,17 @@ export function InsuranceForm() {
               name='contactName'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     Contact Person Name
                   </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Full name'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -329,16 +327,18 @@ export function InsuranceForm() {
               name='contactEmail'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Email Address</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Email Address
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type='email'
                       placeholder='email@company.com'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -347,16 +347,18 @@ export function InsuranceForm() {
               name='contactPhone'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Phone Number</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Phone Number
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type='tel'
                       placeholder='+1234567890'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -365,15 +367,17 @@ export function InsuranceForm() {
               name='contactPosition'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Position</FormLabel>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Position
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Job title'
-                      className='bg-white/5 border-white/10 text-white'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -392,18 +396,20 @@ export function InsuranceForm() {
               name='servicesOffered'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Services Offered</FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Services Offered
+                  </FormLabel>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     List your main insurance services and products
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., International Health Insurance, Travel Insurance...'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -412,18 +418,20 @@ export function InsuranceForm() {
               name='coverageAreas'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>Coverage Areas</FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
+                    Coverage Areas
+                  </FormLabel>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     Specify geographical areas where you provide coverage
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='List countries or regions covered'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
@@ -432,60 +440,23 @@ export function InsuranceForm() {
               name='internationalNetwork'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className='text-white'>
+                  <FormLabel className='text-white text-[11px] md:text-base'>
                     International Network
                   </FormLabel>
-                  <FormDescription className='text-white/60'>
+                  <FormDescription className='text-white/60 text-[10px] md:text-sm'>
                     Describe your international healthcare network
                   </FormDescription>
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Partner Hospitals, Claims Processing Network...'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px]'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className='text-[10px] md:text-sm' />
                 </FormItem>
               )}
             />
-          </motion.div>
-        );
-
-      case 3:
-        return (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className='space-y-6'>
-            <div className='bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10'>
-              <h3 className='text-lg font-medium text-white mb-4'>
-                Required Documents
-              </h3>
-              <ul className='space-y-4 text-white/60'>
-                <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
-                  <div>
-                    <p className='text-white'>Insurance License</p>
-                    <p className='text-sm'>Valid insurance operating license</p>
-                  </div>
-                </li>
-                <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
-                  <div>
-                    <p className='text-white'>Company Profile</p>
-                    <p className='text-sm'>
-                      Detailed company information and track record
-                    </p>
-                  </div>
-                </li>
-              </ul>
-              <p className='mt-4 text-sm text-white/60'>
-                Document upload functionality will be implemented in the next
-                phase
-              </p>
-            </div>
           </motion.div>
         );
 
@@ -526,7 +497,7 @@ export function InsuranceForm() {
                     />
                   </div>
                   <div
-                    className={`absolute -bottom-6 left-1/2 -translate-x-1/2 text-sm whitespace-nowrap ${
+                    className={`absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] md:text-sm whitespace-nowrap ${
                       index <= currentStep ? "text-white" : "text-white/40"
                     }`}>
                     {step.name}
@@ -564,7 +535,7 @@ export function InsuranceForm() {
               <Button
                 type='button'
                 variant='outline'
-                className='bg-white/5 text-white border-white/10 hover:bg-white/10 hover:text-white'
+                className='bg-white/5 text-white border-white/10 hover:bg-white/10 hover:text-white px-3 md:px-4 text-[11px] md:text-base'
                 onClick={handlePrevious}
                 disabled={currentStep === 0}>
                 Previous
