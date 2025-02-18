@@ -146,44 +146,42 @@ export function NavBar() {
               </button>
             </SheetTrigger>
             <SheetContent
-              side='right'
-              className='bg-[#0A1A2F] border-white/10 p-6'>
+              side='left'
+              className='bg-[#0A1A2F] border-white/10 px-6 py-12'>
               <nav
-                className='flex flex-col gap-6'
+                className='flex flex-col'
                 onClick={() => setIsSheetOpen(false)}>
                 {navigation_links.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className='text-lg font-medium text-white/80 hover:text-white transition-colors'>
+                    className='text-base text-white/80 hover:text-white py-3 transition-colors'>
                     {link.title}
                   </Link>
                 ))}
-                <div className='py-4 border-t border-white/10'>
-                  <p className='text-lg font-semibold text-white mb-4'>
-                    Join Us
-                  </p>
-                  <div className='space-y-4'>
+
+                <div className='mt-6'>
+                  <span className='text-sm text-[#FFD60A]'>Join Us</span>
+                  <div className='mt-3 space-y-3'>
                     {join_us_links.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
-                        className='block group'>
-                        <div className='text-white/90 group-hover:text-[#FFD60A] transition-colors'>
-                          {link.title}
-                        </div>
+                        className='block text-[15px] text-white/70 hover:text-white transition-colors'>
+                        {link.title}
                       </Link>
                     ))}
                   </div>
                 </div>
-                <div className='mt-auto space-y-4'>
+
+                <div className='mt-auto pt-8 space-y-3'>
                   <Button
-                    className='w-full bg-transparent border border-white/10 text-white hover:bg-white/5'
+                    className='w-full bg-white/5 hover:bg-white/10 text-white'
                     asChild>
                     <Link href='/request-invite'>Request Invite</Link>
                   </Button>
                   <Button
-                    className='w-full bg-[#FFD60A] text-[#0A1A2F] hover:bg-[#FFD60A]/90'
+                    className='w-full bg-[#FFD60A] hover:bg-[#FFD60A]/90 text-[#0A1A2F]'
                     asChild>
                     <Link href='/contact'>Contact Us</Link>
                   </Button>
