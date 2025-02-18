@@ -70,6 +70,24 @@ const connections = [
 export function Connections() {
   return (
     <section className='relative py-24'>
+      {/* Decorative Gradient Orbs */}
+      <div className='absolute inset-0 overflow-hidden'>
+        {/* Top left gradient orb to blend with Services section's bottom left */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1 }}
+          className='absolute -top-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20'
+        />
+        {/* Bottom right gradient orb */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1 }}
+          className='absolute -bottom-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20'
+        />
+      </div>
+
       <div className='container px-6 mx-auto'>
         {/* Section Header */}
         <motion.div

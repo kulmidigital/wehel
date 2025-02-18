@@ -76,7 +76,18 @@ const markers: Marker[] = [
 
 export function GlobalPresence() {
   return (
-    <section className='relative py-24'>
+    <section className='relative py-24 overflow-hidden'>
+      {/* Decorative Gradient Orbs */}
+      <div className='absolute inset-0 overflow-hidden'>
+        {/* Top right gradient orb to blend with Mission section's bottom right */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1 }}
+          className='absolute -top-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20'
+        />
+      </div>
+
       <div className='container px-6 mx-auto'>
         {/* Section Header */}
         <motion.div

@@ -47,8 +47,26 @@ const services = [
 
 export function Services() {
   return (
-    <section className='relative py-24'>
-      <div className='container px-6 mx-auto'>
+    <section className='relative py-24 bg-[#0A1A2F] overflow-hidden'>
+      {/* Decorative Gradient Orbs */}
+      <div className='absolute inset-0 overflow-hidden'>
+        {/* Top right gradient orb to blend with Features section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1 }}
+          className='absolute -top-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20'
+        />
+        {/* Bottom left gradient orb */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1 }}
+          className='absolute -bottom-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20'
+        />
+      </div>
+
+      <div className='relative container mx-auto px-6'>
         {/* Section Header */}
         <motion.div
           className='max-w-2xl mx-auto text-center mb-16'

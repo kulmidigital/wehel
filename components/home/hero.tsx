@@ -3,7 +3,14 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Globe, Stethoscope, Heart } from "lucide-react";
+import { Globe, Stethoscope, Heart, X } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -93,6 +100,39 @@ const floatingAnimation3 = {
   },
 };
 
+const partnerLinks = [
+  {
+    title: "Hospitals",
+    href: "/join-us/hospital",
+    description: "Partner with us as a healthcare facility",
+  },
+  {
+    title: "Insurance Companies",
+    href: "/join-us/insurance",
+    description: "Join our network as an insurance provider",
+  },
+  {
+    title: "Doctors",
+    href: "/join-us/doctors",
+    description: "Become part of our medical network",
+  },
+  {
+    title: "Travel Agencies",
+    href: "/join-us/travel-agency",
+    description: "Partner in medical tourism services",
+  },
+  {
+    title: "Government",
+    href: "/join-us/government",
+    description: "Establish healthcare partnerships",
+  },
+  {
+    title: "Patients",
+    href: "/request-invite",
+    description: "Start your healthcare journey",
+  },
+];
+
 export function Hero() {
   return (
     <div className='relative min-h-screen overflow-hidden bg-[#0A1A2F]'>
@@ -127,6 +167,14 @@ export function Hero() {
           initial='initial'
           animate='animate'
           className='absolute bottom-1/3 left-1/2 w-7 h-7 md:w-11 md:h-11 lg:w-14 lg:h-14 bg-purple-400 rounded-full blur-[18px] md:blur-[28px] lg:blur-[35px] opacity-10'
+        />
+
+        {/* Bottom left gradient orb to blend with Features section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1 }}
+          className='absolute -bottom-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20'
         />
 
         {/* Animated gradient rings */}
@@ -195,17 +243,47 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
             className='flex flex-col sm:flex-row items-center justify-center gap-4 mb-20'>
-            <Button
-              size='lg'
-              className='relative w-full sm:w-auto min-w-[200px] h-12 bg-[#FFD60A] hover:bg-[#FFD60A]/90 text-[#0A1A2F] font-medium px-8'
-              asChild>
-              <Link href='/request-invite'>Start Your Journey</Link>
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button
+                  size='lg'
+                  className='relative w-full sm:w-auto min-w-[200px] h-12 bg-[#FFD60A] hover:bg-[#FFD60A]/90 text-[#0A1A2F] font-medium px-8'>
+                  Start Your Journey
+                </Button>
+              </DialogTrigger>
+              <DialogContent className='bg-[#0A1A2F] border-white/10 w-[95vw] max-w-3xl p-6 md:p-8'>
+                <DialogHeader className='relative pb-6 text-center md:text-left'>
+                  <DialogTitle className='text-2xl md:text-3xl text-white'>
+                    Choose Your Path
+                  </DialogTitle>
+                  <DialogTrigger asChild>
+                    <button className='absolute right-0 top-0 p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/80 hover:text-white transition-colors'>
+                      <X className='w-5 h-5' />
+                    </button>
+                  </DialogTrigger>
+                </DialogHeader>
+                <div className='grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 max-h-[60vh] overflow-y-auto pr-2'>
+                  {partnerLinks.map((link) => (
+                    <Link
+                      key={link.title}
+                      href={link.href}
+                      className='group block p-4 md:p-6 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-200 hover:border-white/20'>
+                      <h3 className='text-lg md:text-xl font-medium text-white mb-2 group-hover:text-[#FFD60A] transition-colors'>
+                        {link.title}
+                      </h3>
+                      <p className='text-sm md:text-base text-white/60 group-hover:text-white/80 transition-colors'>
+                        {link.description}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </DialogContent>
+            </Dialog>
             <Button
               size='lg'
               className='w-full sm:w-auto min-w-[200px] h-12 bg-white/5 backdrop-blur-sm text-white hover:bg-white/10 border-0 px-8'
               asChild>
-              <Link href='/services'>Learn More</Link>
+              <Link href='/about'>Learn More</Link>
             </Button>
           </motion.div>
 

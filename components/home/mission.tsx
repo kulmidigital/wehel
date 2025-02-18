@@ -33,6 +33,24 @@ const values = [
 export function Mission() {
   return (
     <section className='relative py-24 overflow-hidden'>
+      {/* Decorative Gradient Orbs */}
+      <div className='absolute inset-0 overflow-hidden'>
+        {/* Top left gradient orb to blend with Advantage section's bottom left */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1 }}
+          className='absolute -top-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20'
+        />
+        {/* Bottom right gradient orb */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1 }}
+          className='absolute -bottom-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20'
+        />
+      </div>
+
       {/* Background Image */}
       <div className='absolute inset-0 opacity-10'>
         <Image
