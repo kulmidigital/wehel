@@ -30,20 +30,20 @@ const join_us_links = [
     href: "/join-us/hospital",
   },
   {
-    title: "Financial Institutions & Insurance",
-    href: "/join-us/insurance",
-  },
-  {
-    title: "Affiliate Doctors",
-    href: "/join-us/doctors",
+    title: "Travel Agencies",
+    href: "/join-us/travel-agency",
   },
   {
     title: "Government Institutions",
     href: "/join-us/government",
   },
   {
-    title: "Travel Agencies",
-    href: "/join-us/travel-agency",
+    title: "Affiliate Doctors",
+    href: "/join-us/doctors",
+  },
+  {
+    title: "Financial Institutions & Insurance",
+    href: "/join-us/insurance",
   },
 ];
 
