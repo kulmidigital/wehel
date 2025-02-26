@@ -30,18 +30,18 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.5 }
-  }
+    transition: { duration: 0.5 },
+  },
 };
 
 export function CTA() {
@@ -139,8 +139,8 @@ export function CTA() {
           {/* Features Grid */}
           <motion.div
             variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial='hidden'
+            whileInView='visible'
             viewport={{ once: true }}
             className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-12'>
             {features.map((feature, index) => (
@@ -159,7 +159,7 @@ export function CTA() {
                   {feature.title}
                 </h3>
                 <p className='text-white'>{feature.description}</p>
-                
+
                 {/* Decorative accent line */}
                 <div className='h-1 w-1/3 bg-gradient-to-r from-[#4ade80] to-transparent rounded-full mt-4'></div>
               </motion.div>

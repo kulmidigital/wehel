@@ -7,7 +7,7 @@ import { FAQ } from "@/components/contact/faq";
 
 export default function ContactPage() {
   return (
-    <main className='bg-[#0A1A2F]'>
+    <main className='bg-[#0284C7]'>
       <Hero />
       <ContactInfo />
       <ContactForm />
