@@ -15,8 +15,8 @@ const contact_methods = [
   {
     icon: Mail,
     title: "Email Us",
-    info: "contact@wehel.com",
-    href: "mailto:contact@wehel.com",
+    info: "info@wehelgroup.com",
+    href: "mailto:info@wehelgroup.com",
   },
   {
     icon: Phone,

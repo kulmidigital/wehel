@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { ArrowRight, Send } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -35,6 +36,24 @@ export function ContactForm() {
       message: "",
     },
   });
+
+  // Detect if we're on mobile for responsive design
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener("resize", checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     // Handle form submission
@@ -78,7 +97,7 @@ export function ContactForm() {
                         <FormControl>
                           <Input
                             placeholder='John Doe'
-                            className='bg-white/10 border-white/20 hover:border-[#4ade80]/40 focus:border-[#4ade80]/70 text-white placeholder:text-white/40'
+                            className='bg-white/10 border-white/20 hover:border-[#4ade80]/40 focus:border-[#4ade80]/70 text-white placeholder:text-white/50'
                             {...field}
                           />
                         </FormControl>
@@ -98,7 +117,7 @@ export function ContactForm() {
                           <Input
                             type='email'
                             placeholder='john@example.com'
-                            className='bg-white/10 border-white/20 hover:border-[#4ade80]/40 focus:border-[#4ade80]/70 text-white placeholder:text-white/40'
+                            className='bg-white/10 border-white/20 hover:border-[#4ade80]/40 focus:border-[#4ade80]/70 text-white placeholder:text-white/50'
                             {...field}
                           />
                         </FormControl>
@@ -119,7 +138,7 @@ export function ContactForm() {
                       <FormControl>
                         <Input
                           placeholder='How can we help you?'
-                          className='bg-white/10 border-white/20 hover:border-[#4ade80]/40 focus:border-[#4ade80]/70 text-white placeholder:text-white/40'
+                          className='bg-white/10 border-white/20 hover:border-[#4ade80]/40 focus:border-[#4ade80]/70 text-white placeholder:text-white/50'
                           {...field}
                         />
                       </FormControl>
@@ -139,7 +158,7 @@ export function ContactForm() {
                       <FormControl>
                         <Textarea
                           placeholder='Your message...'
-                          className='bg-white/10 border-white/20 hover:border-[#4ade80]/40 focus:border-[#4ade80]/70 text-white placeholder:text-white/40 min-h-[150px]'
+                          className='bg-white/10 border-white/20 hover:border-[#4ade80]/40 focus:border-[#4ade80]/70 text-white placeholder:text-white/50 min-h-[150px]'
                           {...field}
                         />
                       </FormControl>
@@ -148,11 +167,14 @@ export function ContactForm() {
                   )}
                 />
 
-                <div className='text-right'>
+                {/* Updated button container to be responsive */}
+                <div className={`${isMobile ? "w-full" : "text-right"}`}>
                   <Button
                     type='submit'
                     size='lg'
-                    className='bg-[#4ade80] hover:bg-[#4ade80]/90 text-[#0284c7] font-bold px-8 shadow-lg border-2 border-[#4ade80]/80 hover:scale-105 transition-transform duration-300 relative overflow-hidden group'>
+                    className={`${
+                      isMobile ? "w-full" : ""
+                    } bg-[#4ade80] hover:bg-[#4ade80]/90 text-[#0284c7] font-bold px-8 shadow-lg border-2 border-[#4ade80]/80 hover:scale-105 transition-transform duration-300 relative overflow-hidden group`}>
                     <span className='relative z-10'>Send Message</span>
                     <div className='relative z-10 ml-2 p-1 rounded-full bg-[#0284c7]/20 group-hover:bg-[#0284c7]/30 transition-colors duration-300'>
                       <Send className='h-4 w-4' />

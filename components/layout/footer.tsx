@@ -125,10 +125,10 @@ export function Footer() {
             <ul className='space-y-4'>
               <li>
                 <a
-                  href='mailto:info@wehel.com'
+                  href='mailto:info@wehelgroup.com'
                   className='text-sm text-white hover:text-[#4ADE80] transition-colors inline-flex items-center'>
                   <Mail className='h-4 w-4 mr-2 text-[#4ADE80]' />
-                  info@wehel.com
+                  info@wehelgroup.com
                 </a>
               </li>
               <li>

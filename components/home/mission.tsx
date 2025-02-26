@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Heart, Globe, Shield, Users } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const values = [
   {
@@ -30,51 +31,76 @@ const values = [
   },
 ];
 
+// Simplified animation variants
+const cardVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  hover: {
+    y: -5,
+    transition: { duration: 0.2 },
+  },
+};
+
 export function Mission() {
+  // Detect if we're on mobile for conditional rendering
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener("resize", checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <section className='relative py-24 overflow-hidden bg-[#0284C7]'>
-      {/* Decorative Gradient Orbs */}
-      <div className='absolute inset-0 overflow-hidden'>
-        {/* Top left gradient orb to blend with Advantage section's bottom left */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
-          className='absolute -top-32 -left-32 w-64 h-64 bg-[#4ADE80] rounded-full blur-[120px] opacity-30'
-        />
-        {/* Bottom right gradient orb */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
-          className='absolute -bottom-32 -right-32 w-64 h-64 bg-[#38BDF8] rounded-full blur-[120px] opacity-30'
-        />
-      </div>
+      {/* Decorative Gradient Orbs - Simplified for mobile */}
+      {!isMobile && (
+        <div className='absolute inset-0 overflow-hidden'>
+          {/* Top left gradient orb to blend with Advantage section's bottom left */}
+          <div className='absolute -top-32 -left-32 w-64 h-64 bg-[#4ADE80] rounded-full blur-[120px] opacity-30' />
+          {/* Bottom right gradient orb */}
+          <div className='absolute -bottom-32 -right-32 w-64 h-64 bg-[#38BDF8] rounded-full blur-[120px] opacity-30' />
+        </div>
+      )}
 
       {/* Background Pattern */}
       <div className='absolute inset-0 bg-[linear-gradient(60deg,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(-60deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20'></div>
 
-      {/* Background Image */}
+      {/* Background Image - Optimized loading */}
       <div className='absolute inset-0 opacity-10'>
         <Image
           src='/images/large-globe.webp'
           alt='Global Healthcare'
           fill
           className='object-cover'
+          loading='lazy'
+          priority={false}
         />
       </div>
 
       <div className='container px-6 mx-auto relative'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-7xl mx-auto'>
-          {/* Mission Section */}
+          {/* Mission Section - Simplified animation */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial='hidden'
+            whileInView='visible'
+            whileHover='hover'
             viewport={{ once: true }}
-            whileHover={{
-              y: -5,
-              transition: { duration: 0.2 },
-            }}
+            variants={cardVariants}
             className='relative'>
             <div className='bg-[#026DA7] border-2 border-white/40 rounded-xl p-8 h-full shadow-lg transition-all duration-300'>
               <div className='absolute -top-3 left-8 px-4 py-1 bg-[#4ADE80] rounded-full shadow-md'>
@@ -101,15 +127,13 @@ export function Mission() {
             </div>
           </motion.div>
 
-          {/* Vision Section */}
+          {/* Vision Section - Simplified animation */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial='hidden'
+            whileInView='visible'
+            whileHover='hover'
             viewport={{ once: true }}
-            whileHover={{
-              y: -5,
-              transition: { duration: 0.2 },
-            }}
+            variants={cardVariants}
             className='relative'>
             <div className='bg-[#026DA7] border-2 border-white/40 rounded-xl p-8 h-full shadow-lg transition-all duration-300'>
               <div className='absolute -top-3 left-8 px-4 py-1 bg-[#4ADE80] rounded-full shadow-md'>
@@ -137,12 +161,8 @@ export function Mission() {
           </motion.div>
         </div>
 
-        {/* Values Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className='mt-16'>
+        {/* Values Section - Simplified animation */}
+        <div className='mt-16'>
           <h3 className='text-2xl font-bold text-white text-center mb-12'>
             Our Core Values
           </h3>
@@ -150,10 +170,12 @@ export function Mission() {
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                }}
                 whileHover={{
                   y: -5,
                   transition: { duration: 0.2 },
@@ -174,7 +196,7 @@ export function Mission() {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
