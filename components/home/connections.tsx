@@ -192,7 +192,7 @@ export function Connections() {
           viewport={{ once: true }}>
           <Button
             size='lg'
-            className='relative overflow-hidden bg-[#4ADE80] hover:bg-[#22C55E] text-[#0F172A] font-medium px-8 shadow-lg group'
+            className='relative overflow-hidden bg-[#4ADE80] hover:bg-[#22C55E] text-white font-medium px-8 shadow-lg group'
             asChild>
             <Link href='/contact' className='flex items-center'>
               <span className='relative z-10'>Connect With Us</span>

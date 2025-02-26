@@ -81,7 +81,7 @@ export function NavBar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className='text-white hover:text-white/80 transition-colors font-medium'>
+                className='text-white hover:text-white/80 transition-colors font-medium text-base'>
                 {link.title}
               </Link>
             ))}
@@ -90,7 +90,7 @@ export function NavBar() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant='ghost'
-                  className='text-white hover:text-white/80 hover:bg-transparent px-0 group font-medium'>
+                  className='text-white hover:text-white/80 hover:bg-transparent px-0 group font-medium focus:outline-none text-base'>
                   <span>Join Us</span>
                   <ChevronDown
                     className='ml-1 h-4 w-4 transition duration-200 group-data-[state=open]:rotate-180'
@@ -102,7 +102,7 @@ export function NavBar() {
                 align='end'
                 className='w-[300px] bg-[#0284C7] border-white/30'>
                 <div className='px-2 py-3 text-center border-b border-white/30'>
-                  <p className='text-sm font-medium text-[#4ADE80]'>
+                  <p className='text-sm text-left font-medium text-[#4ADE80]'>
                     Partnership Programs
                   </p>
                 </div>
@@ -127,12 +127,12 @@ export function NavBar() {
 
             <Button
               variant='ghost'
-              className='text-white hover:text-white/80 hover:bg-transparent px-0 font-medium'
+              className='text-white hover:text-white/80 hover:bg-transparent px-0 font-medium text-base'
               asChild>
               <Link href='/request-invite'>Request Invite</Link>
             </Button>
             <Button
-              className='bg-[#4ADE80] hover:bg-[#22C55E] text-[#0F172A] font-medium px-6 shadow-sm shadow-[#4ADE80]/20'
+              className='bg-[#4ADE80] hover:bg-[#22C55E] text-[#ffffff] font-medium px-6 shadow-sm shadow-[#4ADE80]/20 text-base'
               asChild>
               <Link href='/contact'>Contact Us</Link>
             </Button>

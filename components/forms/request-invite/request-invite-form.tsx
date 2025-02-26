@@ -300,7 +300,7 @@ export function RequestInviteForm() {
                   <FormControl>
                     <Input
                       placeholder='Your full name'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -319,7 +319,7 @@ export function RequestInviteForm() {
                   <FormControl>
                     <Input
                       type='date'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -339,7 +339,7 @@ export function RequestInviteForm() {
                     onValueChange={field.onChange}
                     defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className='bg-white/5 border-white/10 text-white text-[11px] md:text-base'>
+                      <SelectTrigger className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-white/50'>
                         <SelectValue placeholder='Select gender' />
                       </SelectTrigger>
                     </FormControl>
@@ -403,7 +403,7 @@ export function RequestInviteForm() {
                     <Input
                       type='email'
                       placeholder='your@email.com'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -423,7 +423,7 @@ export function RequestInviteForm() {
                     <Input
                       type='tel'
                       placeholder='+1234567890'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -445,7 +445,7 @@ export function RequestInviteForm() {
                   <FormControl>
                     <Input
                       placeholder='Emergency contact details'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -474,7 +474,7 @@ export function RequestInviteForm() {
                   <FormControl>
                     <Input
                       placeholder='If you have a specific hospital in mind'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -493,7 +493,7 @@ export function RequestInviteForm() {
                   <FormControl>
                     <Textarea
                       placeholder='Describe the type of treatment you are seeking'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -512,7 +512,7 @@ export function RequestInviteForm() {
                   <FormControl>
                     <Textarea
                       placeholder='Describe your current medical condition'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -534,7 +534,7 @@ export function RequestInviteForm() {
                   <FormControl>
                     <Textarea
                       placeholder='Your medical history'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -553,7 +553,7 @@ export function RequestInviteForm() {
                   <FormControl>
                     <Textarea
                       placeholder='List any medications you are currently taking'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -577,7 +577,7 @@ export function RequestInviteForm() {
               </h3>
               <ul className='space-y-4 text-white/60 text-[10px] md:text-base'>
                 <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
+                  <Upload className='w-5 h-5 text-[#4ade80] mt-1 mr-2' />
                   <div>
                     <p className='text-white'>Passport Copy</p>
                     <p className='text-sm text-white/60'>
@@ -586,7 +586,7 @@ export function RequestInviteForm() {
                   </div>
                 </li>
                 <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
+                  <Upload className='w-5 h-5 text-[#4ade80] mt-1 mr-2' />
                   <div>
                     <p className='text-white'>Good Conduct Certificate</p>
                     <p className='text-sm text-white/60'>
@@ -595,7 +595,7 @@ export function RequestInviteForm() {
                   </div>
                 </li>
                 <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
+                  <Upload className='w-5 h-5 text-[#4ade80] mt-1 mr-2' />
                   <div>
                     <p className='text-white'>Medical Reports</p>
                     <p className='text-sm text-white/60'>
@@ -604,7 +604,7 @@ export function RequestInviteForm() {
                   </div>
                 </li>
                 <li className='flex items-start'>
-                  <Upload className='w-5 h-5 text-[#FFD60A] mt-1 mr-2' />
+                  <Upload className='w-5 h-5 text-[#4ade80] mt-1 mr-2' />
                   <div>
                     <p className='text-white'>Insurance Information</p>
                     <p className='text-sm text-white/60'>
@@ -639,7 +639,7 @@ export function RequestInviteForm() {
                   <FormControl>
                     <Input
                       placeholder='When would you like to travel?'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -662,7 +662,7 @@ export function RequestInviteForm() {
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Hospital accommodation, hotel preferences'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -684,7 +684,7 @@ export function RequestInviteForm() {
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Wheelchair assistance, special dietary requirements'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -706,7 +706,7 @@ export function RequestInviteForm() {
                   <FormControl>
                     <Input
                       placeholder='Specify languages if translation is needed'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
                       {...field}
                     />
                   </FormControl>
@@ -742,13 +742,13 @@ export function RequestInviteForm() {
                   <div
                     className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-colors ${
                       index <= currentStep
-                        ? "border-[#FFD60A] bg-[#FFD60A]/10"
+                        ? "border-[#4ade80] bg-[#4ade80]/10"
                         : "border-white/20 bg-white/5"
-                    } group-hover:border-[#FFD60A]/70`}>
+                    } group-hover:border-[#4ade80]/70`}>
                     <step.icon
                       className={`w-5 h-5 ${
                         index <= currentStep
-                          ? "text-[#FFD60A]"
+                          ? "text-[#4ade80]"
                           : "text-white/40"
                       }`}
                     />
@@ -765,7 +765,7 @@ export function RequestInviteForm() {
               {index < steps.length - 1 && (
                 <div className='w-20 mx-2 h-[2px] bg-white/20'>
                   <div
-                    className={`h-full bg-[#FFD60A] transition-all duration-300 ${
+                    className={`h-full bg-[#4ade80] transition-all duration-300 ${
                       index < currentStep ? "w-full" : "w-0"
                     }`}
                   />
@@ -781,7 +781,7 @@ export function RequestInviteForm() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className='bg-white/5 backdrop-blur-md rounded-xl p-8 border border-white/10'>
+        className='bg-[#026da7]/90 backdrop-blur-md rounded-xl p-8 border-2 border-white/10 shadow-lg'>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
             <AnimatePresence mode='wait'>
@@ -799,8 +799,17 @@ export function RequestInviteForm() {
               </Button>
               <Button
                 type='submit'
-                className='bg-[#FFD60A] text-[#0A1A2F] hover:bg-[#FFD60A]/90'>
-                {currentStep === steps.length - 1 ? "Submit" : "Next"}
+                className='bg-[#4ade80] text-[#ffffff] hover:bg-[#4ade80]/90 font-bold shadow-lg border-2 border-[#4ade80]/80 hover:scale-105 transition-transform duration-300 relative overflow-hidden group'>
+                <span className='relative z-10'>
+                  {currentStep === steps.length - 1 ? "Submit" : "Next"}
+                </span>
+                {/* Button background animation */}
+                <motion.div
+                  className='absolute inset-0 w-full h-full bg-[#22c55e] -z-10'
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
               </Button>
             </div>
           </form>

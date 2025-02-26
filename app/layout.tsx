@@ -4,6 +4,8 @@ import "./globals.css";
 
 import { NavBar } from "@/components/layout/nav_bar";
 import { Footer } from "@/components/layout/footer";
+import { Toaster } from "@/components/ui/toaster";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -30,6 +32,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </div>
+        <Toaster />
       </body>
     </html>
   );

@@ -29,22 +29,12 @@ const contact_methods = [
 const social_links = [
   {
     name: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/profile.php?id=61573530185139#",
     icon: Facebook,
   },
   {
-    name: "Twitter",
-    href: "#",
-    icon: Twitter,
-  },
-  {
-    name: "LinkedIn",
-    href: "#",
-    icon: Linkedin,
-  },
-  {
     name: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/wehelgroup/?utm_source=ig_web_button_share_sheet",
     icon: Instagram,
   },
 ];

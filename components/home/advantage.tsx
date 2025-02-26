@@ -67,7 +67,7 @@ const advantages = {
         title: "Institutional Growth",
         description: "Enhanced credibility and stronger industry partnerships",
       },
-      {
+      { 
         icon: Users,
         title: "Cultural Competence",
         description: "Culturally adapted patient care and communication",
@@ -202,7 +202,7 @@ export function Advantage() {
                   </div>
 
                   <Button
-                    className='w-full mt-6 relative overflow-hidden bg-[#4ADE80] hover:bg-[#22C55E] text-[#0F172A] font-medium shadow-lg group/button'
+                    className='w-full mt-6 relative overflow-hidden bg-[#4ADE80] hover:bg-[#22C55E] text-white font-medium shadow-lg group/button'
                     asChild>
                     <Link
                       href={advantage.cta.href}
