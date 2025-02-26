@@ -76,7 +76,7 @@ const markers: Marker[] = [
 
 export function GlobalPresence() {
   return (
-    <section className='relative py-24 overflow-hidden'>
+    <section className='relative py-24 overflow-hidden bg-[#0284C7]'>
       {/* Decorative Gradient Orbs */}
       <div className='absolute inset-0 overflow-hidden'>
         {/* Top right gradient orb to blend with Mission section's bottom right */}
@@ -84,7 +84,7 @@ export function GlobalPresence() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ duration: 1 }}
-          className='absolute -top-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20'
+          className='absolute -top-32 -right-32 w-64 h-64 bg-[#38BDF8] rounded-full blur-[120px] opacity-30'
         />
       </div>
 
@@ -96,9 +96,9 @@ export function GlobalPresence() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}>
           <h2 className='text-3xl md:text-4xl font-medium text-white mb-4'>
-            Bridging <span className='text-[#FFD60A]'>Global Healthcare</span>
+            Bridging <span className='text-[#4ADE80]'>Global Healthcare</span>
           </h2>
-          <p className='text-white/60'>
+          <p className='text-white'>
             From our base in Kenya, we connect patients with world-class
             healthcare facilities in leading medical destinations
           </p>
@@ -106,7 +106,7 @@ export function GlobalPresence() {
 
         {/* Map Section */}
         <motion.div
-          className='relative mb-16 bg-[#0A1A2F] border border-white/10 rounded-xl p-4 overflow-hidden'
+          className='relative mb-16 bg-[#0369A1] border border-white/20 rounded-xl p-4 overflow-hidden shadow-lg'
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}>
@@ -130,8 +130,8 @@ export function GlobalPresence() {
                     <Geography
                       key={geo.rsmKey}
                       geography={geo}
-                      fill='#1E293B'
-                      stroke='#334155'
+                      fill='#0F172A'
+                      stroke='#1E293B'
                       strokeWidth={0.5}
                       style={{
                         default: { outline: "none" },
@@ -151,10 +151,11 @@ export function GlobalPresence() {
                     <Line
                       from={markers[0].coordinates}
                       to={marker.coordinates}
-                      stroke='#FFD60A'
+                      stroke='#4ADE80'
                       strokeWidth={1.5}
                       strokeLinecap='round'
                       strokeDasharray='2,4'
+                      strokeOpacity={0.8}
                     />
                     <motion.circle
                       initial={{ scale: 0 }}
@@ -178,7 +179,7 @@ export function GlobalPresence() {
                         repeatDelay: 2,
                       }}
                       r={1.5}
-                      fill='#FFD60A'
+                      fill='#4ADE80'
                       style={{ originX: "50%", originY: "50%" }}
                     />
                   </motion.g>
@@ -192,9 +193,10 @@ export function GlobalPresence() {
                     <Line
                       from={markers[0].coordinates}
                       to={marker.coordinates}
-                      stroke='#FFD60A'
+                      stroke='#38BDF8'
                       strokeWidth={1.5}
                       strokeLinecap='round'
+                      strokeOpacity={0.8}
                     />
                     <motion.circle
                       initial={{ scale: 0 }}
@@ -218,7 +220,7 @@ export function GlobalPresence() {
                         repeatDelay: 3,
                       }}
                       r={2}
-                      fill='#FFD60A'
+                      fill='#38BDF8'
                       style={{ originX: "50%", originY: "50%" }}
                     />
                   </motion.g>
@@ -230,18 +232,18 @@ export function GlobalPresence() {
                   <Marker coordinates={coordinates}>
                     <g transform='translate(-12, -24)'>
                       <motion.circle
-                        r={type === "base" ? 4 : type === "africa" ? 3 : 4}
+                        r={type === "base" ? 5 : type === "africa" ? 3 : 4}
                         cx={12}
                         cy={24}
                         fill={
                           type === "base"
-                            ? "#FFD60A"
+                            ? "#4ADE80"
                             : type === "africa"
-                            ? "#FFD60A"
-                            : "#64748B"
+                            ? "#4ADE80"
+                            : "#38BDF8"
                         }
                         opacity={
-                          type === "base" ? 1 : type === "africa" ? 0.8 : 0.6
+                          type === "base" ? 1 : type === "africa" ? 0.9 : 0.8
                         }
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
@@ -253,10 +255,10 @@ export function GlobalPresence() {
                       />
                       {type === "base" && (
                         <motion.circle
-                          r={8}
+                          r={10}
                           cx={12}
                           cy={24}
-                          fill='#FFD60A'
+                          fill='#4ADE80'
                           opacity={0.3}
                           initial={{ scale: 0 }}
                           animate={{
@@ -282,23 +284,28 @@ export function GlobalPresence() {
                             width={24}
                             height={20}
                             rx={4}
-                            fill='#0A1A2F'
-                            strokeWidth={1}
+                            fill={type === "base" ? "#0F172A" : "#0F172A"}
+                            strokeWidth={1.5}
                             stroke={
-                              type === "base" || type === "africa"
-                                ? "#FFD60A"
-                                : "#64748B"
+                              type === "base"
+                                ? "#4ADE80"
+                                : type === "africa"
+                                ? "#4ADE80"
+                                : "#38BDF8"
                             }
-                            opacity={type === "africa" ? 0.9 : 1}
+                            opacity={type === "africa" ? 0.95 : 1}
                           />
                           <text
                             x={12}
                             y={14}
                             fontSize={8}
+                            fontWeight='bold'
                             fill={
-                              type === "base" || type === "africa"
-                                ? "#FFD60A"
-                                : "#64748B"
+                              type === "base"
+                                ? "#4ADE80"
+                                : type === "africa"
+                                ? "#4ADE80"
+                                : "#38BDF8"
                             }
                             textAnchor='middle'>
                             {name}
@@ -322,18 +329,18 @@ export function GlobalPresence() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className='bg-[#0A1A2F] border border-white/10 rounded-xl p-6'>
-              <region.icon className='w-8 h-8 text-[#FFD60A] mb-4' />
+              className='bg-[#0284C7] border border-white/20 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300'>
+              <region.icon className='w-8 h-8 text-[#4ADE80] mb-4' />
               <h3 className='text-xl font-medium text-white mb-2'>
                 {region.name}
               </h3>
-              <p className='text-white/60 text-sm mb-4'>{region.description}</p>
+              <p className='text-white text-sm mb-4'>{region.description}</p>
               <ul className='space-y-2'>
                 {region.highlights.map((highlight) => (
                   <li
                     key={highlight}
-                    className='flex items-center text-white/80 text-sm'>
-                    <span className='w-1.5 h-1.5 rounded-full bg-[#FFD60A] mr-2' />
+                    className='flex items-center text-white text-sm'>
+                    <span className='w-2 h-2 rounded-full bg-[#4ADE80] mr-2' />
                     {highlight}
                   </li>
                 ))}

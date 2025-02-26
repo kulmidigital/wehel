@@ -62,7 +62,7 @@ const social_links = [
 
 export function Footer() {
   return (
-    <footer className='bg-[#0A1A2F] border-t border-white/10'>
+    <footer className='bg-[#0284C7] border-t border-white/20'>
       <div className='container px-6 py-12 mx-auto'>
         {/* Main Footer Content */}
         <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4'>
@@ -76,7 +76,7 @@ export function Footer() {
                 Wehel
               </motion.span>
             </Link>
-            <p className='text-sm text-white/60 max-w-sm'>
+            <p className='text-sm text-white max-w-sm'>
               Transforming medical tourism through seamless healthcare access,
               comprehensive support, and trusted partnerships worldwide.
             </p>
@@ -85,7 +85,7 @@ export function Footer() {
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  className='text-white/60 hover:text-[#FFD60A] transition-colors'
+                  className='text-white hover:text-[#4ADE80] transition-colors'
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}>
                   <span className='sr-only'>{link.name}</span>
@@ -103,7 +103,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className='text-sm text-white/60 hover:text-[#FFD60A] transition-colors inline-flex items-center group'>
+                    className='text-sm text-white hover:text-[#4ADE80] transition-colors inline-flex items-center group'>
                     <ArrowRight className='h-4 w-4 mr-2 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all' />
                     {link.name}
                   </Link>
@@ -120,7 +120,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className='text-sm text-white/60 hover:text-[#FFD60A] transition-colors inline-flex items-center group'>
+                    className='text-sm text-white hover:text-[#4ADE80] transition-colors inline-flex items-center group'>
                     <ArrowRight className='h-4 w-4 mr-2 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all' />
                     {link.name}
                   </Link>
@@ -136,22 +136,22 @@ export function Footer() {
               <li>
                 <a
                   href='mailto:info@wehel.com'
-                  className='text-sm text-white/60 hover:text-[#FFD60A] transition-colors inline-flex items-center'>
-                  <Mail className='h-4 w-4 mr-2 text-[#FFD60A]' />
+                  className='text-sm text-white hover:text-[#4ADE80] transition-colors inline-flex items-center'>
+                  <Mail className='h-4 w-4 mr-2 text-[#4ADE80]' />
                   info@wehel.com
                 </a>
               </li>
               <li>
                 <a
                   href='tel:+254700000000'
-                  className='text-sm text-white/60 hover:text-[#FFD60A] transition-colors inline-flex items-center'>
-                  <Phone className='h-4 w-4 mr-2 text-[#FFD60A]' />
+                  className='text-sm text-white hover:text-[#4ADE80] transition-colors inline-flex items-center'>
+                  <Phone className='h-4 w-4 mr-2 text-[#4ADE80]' />
                   +254 700 000 000
                 </a>
               </li>
               <li className='flex items-start'>
-                <MapPin className='h-4 w-4 mr-2 text-[#FFD60A] mt-1 shrink-0' />
-                <span className='text-sm text-white/60'>
+                <MapPin className='h-4 w-4 mr-2 text-[#4ADE80] mt-1 shrink-0' />
+                <span className='text-sm text-white'>
                   Nairobi, Kenya
                   <br />
                   Business District
@@ -162,7 +162,7 @@ export function Footer() {
         </div>
 
         {/* Partnership Section */}
-        <div className='mt-12 pt-8 border-t border-white/10'>
+        <div className='mt-12 pt-8 border-t border-white/20'>
           <h3 className='text-lg font-medium text-white mb-4'>
             Partnership Programs
           </h3>
@@ -171,7 +171,7 @@ export function Footer() {
               <Link
                 key={link.name}
                 href={link.href}
-                className='text-sm text-white/60 hover:text-[#FFD60A] transition-colors inline-flex items-center group'>
+                className='text-sm text-white hover:text-[#4ADE80] transition-colors inline-flex items-center group'>
                 <ArrowRight className='h-4 w-4 mr-2 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all' />
                 {link.name}
               </Link>
@@ -180,15 +180,15 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className='mt-12 pt-8 border-t border-white/10'>
+        <div className='mt-12 pt-8 border-t border-white/20'>
           <div className='flex flex-col md:flex-row justify-between items-center'>
-            <p className='text-sm text-white/60'>
+            <p className='text-sm text-white'>
               © {new Date().getFullYear()} Wehel. All rights reserved.
             </p>
             <div className='mt-4 md:mt-0'>
               <Link
                 href='/request-invite'
-                className='text-sm text-[#FFD60A] hover:text-[#FFD60A]/80 transition-colors inline-flex items-center group'>
+                className='text-sm text-[#4ADE80] hover:text-[#4ADE80]/90 transition-colors inline-flex items-center group font-medium'>
                 Start Your Healthcare Journey
                 <ArrowRight className='h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform' />
               </Link>

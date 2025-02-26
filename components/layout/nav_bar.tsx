@@ -65,7 +65,7 @@ export function NavBar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-[#0A1A2F]/80 backdrop-blur-lg border-b border-white/10 py-3"
+          ? "bg-[#0284C7]/90 backdrop-blur-lg border-b border-white/20 py-3"
           : "bg-transparent py-4"
       )}>
       <nav className='container px-6 mx-auto'>
@@ -81,7 +81,7 @@ export function NavBar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className='text-white/80 hover:text-white transition-colors'>
+                className='text-white hover:text-white/80 transition-colors font-medium'>
                 {link.title}
               </Link>
             ))}
@@ -90,7 +90,7 @@ export function NavBar() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant='ghost'
-                  className='text-white/80 hover:text-white hover:bg-transparent px-0 group'>
+                  className='text-white hover:text-white/80 hover:bg-transparent px-0 group font-medium'>
                   <span>Join Us</span>
                   <ChevronDown
                     className='ml-1 h-4 w-4 transition duration-200 group-data-[state=open]:rotate-180'
@@ -100,9 +100,9 @@ export function NavBar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align='end'
-                className='w-[300px] bg-[#0A1A2F] border-white/10'>
-                <div className='px-2 py-3 text-center border-b border-white/10'>
-                  <p className='text-sm font-medium text-[#FFD60A]'>
+                className='w-[300px] bg-[#0284C7] border-white/30'>
+                <div className='px-2 py-3 text-center border-b border-white/30'>
+                  <p className='text-sm font-medium text-[#4ADE80]'>
                     Partnership Programs
                   </p>
                 </div>
@@ -111,11 +111,11 @@ export function NavBar() {
                     <DropdownMenuItem
                       key={link.href}
                       asChild
-                      className='focus:bg-white/5 rounded-lg'>
+                      className='focus:bg-white/20 rounded-lg'>
                       <Link
                         href={link.href}
                         className='w-full py-3 px-4 text-left group'>
-                        <p className='text-white text-base font-medium group-hover:text-[#FFD60A] transition-colors'>
+                        <p className='text-white text-base font-medium group-hover:text-[#4ADE80] transition-colors'>
                           {link.title}
                         </p>
                       </Link>
@@ -127,12 +127,12 @@ export function NavBar() {
 
             <Button
               variant='ghost'
-              className='text-white/80 hover:text-white hover:bg-transparent px-0'
+              className='text-white hover:text-white/80 hover:bg-transparent px-0 font-medium'
               asChild>
               <Link href='/request-invite'>Request Invite</Link>
             </Button>
             <Button
-              className='bg-[#FFD60A] hover:bg-[#FFD60A]/90 text-[#0A1A2F] font-medium px-6'
+              className='bg-[#4ADE80] hover:bg-[#22C55E] text-[#0F172A] font-medium px-6 shadow-sm shadow-[#4ADE80]/20'
               asChild>
               <Link href='/contact'>Contact Us</Link>
             </Button>
@@ -141,13 +141,13 @@ export function NavBar() {
           {/* Mobile Menu */}
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
-              <button className='md:hidden p-2 text-white hover:text-[#FFD60A] transition-colors'>
+              <button className='md:hidden p-2 text-white hover:text-[#4ADE80] transition-colors'>
                 <Menu className='w-7 h-7' />
               </button>
             </SheetTrigger>
             <SheetContent
               side='left'
-              className='bg-[#0A1A2F] border-white/10 px-6 py-12'>
+              className='bg-[#0284C7] border-white/30 px-6 py-12'>
               <nav
                 className='flex flex-col'
                 onClick={() => setIsSheetOpen(false)}>
@@ -155,19 +155,21 @@ export function NavBar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className='text-base text-white/80 hover:text-white py-3 transition-colors'>
+                    className='text-base text-white hover:text-white/80 py-3 transition-colors font-medium'>
                     {link.title}
                   </Link>
                 ))}
 
                 <div className='mt-6'>
-                  <span className='text-sm text-[#FFD60A]'>Join Us</span>
+                  <span className='text-sm text-[#4ADE80] font-medium'>
+                    Join Us
+                  </span>
                   <div className='mt-3 space-y-3'>
                     {join_us_links.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
-                        className='block text-[15px] text-white/70 hover:text-white transition-colors'>
+                        className='block text-[15px] text-white hover:text-[#4ADE80] transition-colors'>
                         {link.title}
                       </Link>
                     ))}
@@ -176,12 +178,12 @@ export function NavBar() {
 
                 <div className='mt-auto pt-8 space-y-3'>
                   <Button
-                    className='w-full bg-white/5 hover:bg-white/10 text-white'
+                    className='w-full bg-white/20 hover:bg-white/30 text-white border border-white/30'
                     asChild>
                     <Link href='/request-invite'>Request Invite</Link>
                   </Button>
                   <Button
-                    className='w-full bg-[#FFD60A] hover:bg-[#FFD60A]/90 text-[#0A1A2F]'
+                    className='w-full bg-[#4ADE80] hover:bg-[#22C55E] text-[#0F172A] font-medium shadow-sm shadow-[#4ADE80]/20'
                     asChild>
                     <Link href='/contact'>Contact Us</Link>
                   </Button>
