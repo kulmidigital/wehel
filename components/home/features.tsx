@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const features = [
   {
@@ -88,17 +89,28 @@ const features = [
   },
 ];
 
+// Simplified card variants with reduced animation properties
 const cardVariants = {
   initial: { opacity: 0, y: 20 },
   animate: (index: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: index * 0.1,
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1],
+      delay: Math.min(index * 0.05, 0.3), // Cap delay to prevent long waits
+      duration: 0.4,
+      ease: "easeOut",
     },
   }),
+};
+
+// Simplified list item variants
+const listItemVariants = {
+  initial: { opacity: 0, x: -5 },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.2 },
+  },
 };
 
 const cardGradients = [
@@ -147,58 +159,66 @@ export function Features() {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
+  // Detect if we're on mobile for conditional rendering
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener("resize", checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <section className='relative py-24 bg-[#0284C7] overflow-hidden'>
-      {/* Background Pattern */}
-      <motion.div className='absolute inset-0' style={{ y }}>
-        <div
-          className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:4rem_4rem]'
-          style={{
-            maskImage:
-              "radial-gradient(ellipse 50% 80% at 50% 50%, black, transparent)",
-            WebkitMaskImage:
-              "radial-gradient(ellipse 50% 80% at 50% 50%, black, transparent)",
-          }}
-        />
-      </motion.div>
+      {/* Background Pattern - Simplified for mobile */}
+      {!isMobile && (
+        <motion.div
+          className='absolute inset-0'
+          style={{ y }}
+          transition={{ type: "tween" }} // Use tween instead of spring for lighter animation
+        >
+          <div
+            className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:4rem_4rem]'
+            style={{
+              maskImage:
+                "radial-gradient(ellipse 50% 80% at 50% 50%, black, transparent)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 50% 80% at 50% 50%, black, transparent)",
+            }}
+          />
+        </motion.div>
+      )}
 
-      {/* Decorative Gradient Orbs */}
-      <div className='absolute inset-0 overflow-hidden'>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
-          className='absolute -top-32 -left-32 w-64 h-64 bg-[#4ADE80] rounded-full blur-[120px] opacity-30'
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className='absolute -bottom-32 -right-32 w-64 h-64 bg-[#38BDF8] rounded-full blur-[120px] opacity-30'
-        />
-      </div>
+      {/* Decorative Gradient Orbs - Simplified for mobile */}
+      {!isMobile && (
+        <div className='absolute inset-0 overflow-hidden'>
+          <div className='absolute -top-32 -left-32 w-64 h-64 bg-[#4ADE80] rounded-full blur-[120px] opacity-30' />
+          <div className='absolute -bottom-32 -right-32 w-64 h-64 bg-[#38BDF8] rounded-full blur-[120px] opacity-30' />
+        </div>
+      )}
 
       <div className='relative container mx-auto px-6'>
-        {/* Section Header */}
+        {/* Section Header - Simplified animation */}
         <motion.div
           className='max-w-2xl mx-auto text-center mb-16'
-          initial='initial'
-          whileInView='animate'
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          variants={{
-            initial: { opacity: 0, y: 20 },
-            animate: { opacity: 1, y: 0 },
-          }}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className='inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-white/20 to-white/5 backdrop-blur-sm border border-white/30 mb-8 shadow-lg'>
+          transition={{ duration: 0.4 }}>
+          <div className='inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-white/20 to-white/5 backdrop-blur-sm border border-white/30 mb-8 shadow-lg'>
             <span className='text-sm text-[#4ADE80] font-semibold'>
               Join Our Network
             </span>
-          </motion.div>
+          </div>
           <h2 className='text-3xl md:text-4xl font-medium text-white mb-4'>
             Partner with <span className='text-[#4ADE80]'>Wehel</span>
           </h2>
@@ -217,67 +237,67 @@ export function Features() {
               custom={index}
               initial='initial'
               whileInView='animate'
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-10%" }}
               variants={cardVariants}
-              whileHover={{
-                y: -5,
-                transition: { duration: 0.2 },
-              }}>
-              {/* Card glow effect */}
-              <div
-                className='absolute -inset-0.5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md'
-                style={{
-                  background: `linear-gradient(to bottom right, ${
-                    cardGradients[index].split(" ")[1]
-                  }, ${cardGradients[index].split(" ")[3]})`,
-                }}
-              />
+              whileHover={
+                !isMobile
+                  ? {
+                      y: -5,
+                      transition: { duration: 0.2 },
+                    }
+                  : undefined
+              }>
+              {/* Card glow effect - Simplified for mobile */}
+              {!isMobile && (
+                <div
+                  className='absolute -inset-0.5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md'
+                  style={{
+                    background: `linear-gradient(to bottom right, ${
+                      cardGradients[index].split(" ")[1]
+                    }, ${cardGradients[index].split(" ")[3]})`,
+                  }}
+                />
+              )}
 
               {/* Main card */}
-              <div className='relative bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-md border border-white/30 rounded-2xl overflow-hidden h-full flex flex-col transition-all duration-300 shadow-xl'>
+              <div className='relative bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-md border border-white/30 rounded-2xl overflow-hidden h-full flex flex-col transition-all duration-300 shadow-xl will-change-transform'>
                 {/* Image Container with creative overlay */}
                 <div className='relative h-[200px] overflow-hidden'>
                   <Image
                     src={feature.image}
                     alt={feature.title}
                     fill
-                    className='object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1'
+                    className='object-cover transition-all duration-700 group-hover:scale-105'
+                    loading='lazy'
                   />
 
                   {/* Diagonal overlay */}
-                  <div className='absolute inset-0 bg-gradient-to-tr from-[#0284C7]/95 via-[#0284C7]/70 to-transparent opacity-90 group-hover:opacity-75 transition-opacity duration-300' />
+                  <div className='absolute inset-0 bg-gradient-to-tr from-[#0284C7]/95 via-[#0284C7]/70 to-transparent opacity-90' />
 
-                  {/* Decorative pattern overlay */}
-                  <div className='absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(-45deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30 group-hover:opacity-50 transition-opacity duration-300' />
+                  {/* Decorative pattern overlay - Simplified */}
+                  <div className='absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(-45deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30' />
 
-                  {/* Floating badge with animation */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.05 }}
+                  {/* Floating badge with simplified animation */}
+                  <div
                     className={`absolute top-4 left-4 px-3 py-1.5 rounded-full ${badgeStyles[index].background} backdrop-blur-md border ${badgeStyles[index].border} shadow-lg`}>
                     <span
                       className={`text-xs font-bold ${badgeStyles[index].text} tracking-wide`}>
                       {feature.badge}
                     </span>
-                  </motion.div>
+                  </div>
 
-                  {/* Animated corner icon */}
-                  <motion.div
-                    className='absolute top-4 right-4 w-10 h-10 rounded-full bg-gradient-to-br backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0 rotate-12 group-hover:rotate-0 shadow-lg'
-                    style={{
-                      background: `linear-gradient(to bottom right, ${
-                        cardGradients[index].split(" ")[1]
-                      }, ${cardGradients[index].split(" ")[3]})`,
-                    }}
-                    whileHover={{
-                      scale: 1.1,
-                      rotate: 45,
-                      transition: { duration: 0.2 },
-                    }}>
-                    <ArrowUpRight className='w-5 h-5 text-white' />
-                  </motion.div>
+                  {/* Animated corner icon - Only on desktop */}
+                  {!isMobile && (
+                    <div
+                      className='absolute top-4 right-4 w-10 h-10 rounded-full bg-gradient-to-br backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0 shadow-lg'
+                      style={{
+                        background: `linear-gradient(to bottom right, ${
+                          cardGradients[index].split(" ")[1]
+                        }, ${cardGradients[index].split(" ")[3]})`,
+                      }}>
+                      <ArrowUpRight className='w-5 h-5 text-white' />
+                    </div>
+                  )}
                 </div>
 
                 <div className='p-6 flex flex-col flex-1 relative'>
@@ -291,57 +311,43 @@ export function Features() {
                     }}
                   />
 
-                  {/* Title with animated underline */}
-                  <div className='relative inline-block mb-3 overflow-hidden'>
+                  {/* Title with simplified animation */}
+                  <div className='relative inline-block mb-3'>
                     <h3 className='text-xl font-bold text-white transition-all duration-300 group-hover:text-[#4ADE80]'>
                       {feature.title}
                     </h3>
-                    <motion.div
-                      className='absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-500'
-                      style={{
-                        background: `linear-gradient(to right, ${
-                          cardGradients[index].split(" ")[1]
-                        }, transparent)`,
-                      }}
-                    />
                   </div>
 
-                  <p className='text-white text-sm mb-5 group-hover:text-white transition-colors duration-300 leading-relaxed'>
+                  <p className='text-white text-sm mb-5 leading-relaxed'>
                     {feature.description}
                   </p>
 
-                  {/* Benefits list with animated icons */}
+                  {/* Benefits list with simplified animations */}
                   <ul className='space-y-3 mb-6 flex-1'>
                     {feature.benefits.map((benefit, benefitIndex) => (
                       <motion.li
                         key={benefit}
                         className='flex items-start text-sm group/item'
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        variants={listItemVariants}
+                        initial='initial'
+                        whileInView='animate'
                         viewport={{ once: true }}
                         transition={{
-                          duration: 0.3,
-                          delay: benefitIndex * 0.1,
-                        }}
-                        whileHover={{ x: 3 }}>
+                          delay: benefitIndex * 0.05,
+                        }}>
                         <div className='relative'>
-                          <motion.div
-                            className='h-5 w-5 rounded-full flex items-center justify-center mr-2 mt-0.5 shrink-0 transition-all duration-300 bg-white/10 border border-white/20 group-hover/item:border-[#4ADE80]/50'
-                            whileHover={{
-                              scale: 1.1,
-                              backgroundColor: "rgba(74, 222, 128, 0.2)",
-                            }}>
-                            <ArrowRight className='h-3 w-3 text-[#4ADE80] group-hover/item:translate-x-0.5 transition-transform duration-300' />
-                          </motion.div>
+                          <div className='h-5 w-5 rounded-full flex items-center justify-center mr-2 mt-0.5 shrink-0 transition-all duration-300 bg-white/10 border border-white/20 group-hover/item:border-[#4ADE80]/50'>
+                            <ArrowRight className='h-3 w-3 text-[#4ADE80]' />
+                          </div>
                         </div>
-                        <span className='text-white font-medium group-hover/item:text-[#4ADE80] transition-colors duration-300'>
+                        <span className='text-white font-medium transition-colors duration-300'>
                           {benefit}
                         </span>
                       </motion.li>
                     ))}
                   </ul>
 
-                  {/* Button with simpler hover effect - removed gradient glow */}
+                  {/* Button with simplified hover effect */}
                   <div className='mt-auto'>
                     <Button
                       variant='ghost'
@@ -353,11 +359,9 @@ export function Features() {
                         <span className='text-white font-medium transition-all duration-300 group-hover:text-[#4ADE80]'>
                           {feature.buttonText || "Join as Partner"}
                         </span>
-                        <motion.div
-                          className='flex items-center justify-center w-6 h-6 rounded-full bg-white/10 group-hover:bg-[#4ADE80]/20 transition-colors duration-300'
-                          whileHover={{ rotate: 45 }}>
-                          <ArrowRight className='h-3.5 w-3.5 text-[#4ADE80] group-hover:translate-x-0.5 transition-transform duration-300' />
-                        </motion.div>
+                        <div className='flex items-center justify-center w-6 h-6 rounded-full bg-white/10 group-hover:bg-[#4ADE80]/20 transition-colors duration-300'>
+                          <ArrowRight className='h-3.5 w-3.5 text-[#4ADE80]' />
+                        </div>
                       </Link>
                     </Button>
                   </div>
