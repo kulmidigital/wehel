@@ -8,7 +8,7 @@ import { CTA } from "@/components/about/cta";
 
 export default function AboutPage() {
   return (
-    <main className='bg-[#0A1A2F]'>
+    <main className='bg-[#0284c7]'>
       <Hero />
       <Mission />
       <Values />
