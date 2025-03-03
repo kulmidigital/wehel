@@ -187,6 +187,16 @@ export function NavBar() {
                     asChild>
                     <Link href='/contact'>Contact Us</Link>
                   </Button>
+
+                  <div className='pt-6 text-center'>
+                    <a
+                      href='https://www.kulmi.digital/'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='text-sm text-white/60 hover:text-[#FFD60A] transition-colors'>
+                      Designed by Kulmi Digital
+                    </a>
+                  </div>
                 </div>
               </nav>
             </SheetContent>

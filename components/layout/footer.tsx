@@ -173,9 +173,19 @@ export function Footer() {
         {/* Copyright */}
         <div className='mt-12 pt-8 border-t border-white/10'>
           <div className='flex flex-col md:flex-row justify-between items-center'>
-            <p className='text-sm text-white/60'>
-              © {new Date().getFullYear()} Wehel. All rights reserved.
-            </p>
+            <div className='flex flex-col md:flex-row items-center space-y-2 md:space-y-0'>
+              <p className='text-sm text-white/60'>
+                © {new Date().getFullYear()} Wehel. All rights reserved.
+              </p>
+              <span className='hidden md:inline mx-2 text-white/60'>•</span>
+              <a
+                href='https://www.kulmi.digital/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='text-sm text-white/60 hover:text-[#FFD60A] transition-colors'>
+                Designed by Kulmi Digital
+              </a>
+            </div>
             <div className='mt-4 md:mt-0'>
               <PartnerDialog
                 trigger={
