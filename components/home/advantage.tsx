@@ -90,28 +90,14 @@ export function Advantage() {
       {/* Decorative Gradient Orbs */}
       <div className='absolute inset-0 overflow-hidden'>
         {/* Top right gradient orb to blend with Connections section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
-          className='absolute -top-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20'
-        />
+        <div className='absolute -top-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20' />
         {/* Bottom left gradient orb */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
-          className='absolute -bottom-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20'
-        />
+        <div className='absolute -bottom-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20' />
       </div>
 
       <div className='container px-6 mx-auto'>
         {/* Section Header */}
-        <motion.div
-          className='max-w-3xl mx-auto text-center mb-16'
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}>
+        <div className='max-w-3xl mx-auto text-center mb-16'>
           <h2 className='text-3xl md:text-4xl font-medium text-white mb-4'>
             The <span className='text-[#FFD60A]'>Wehel</span> Advantage
           </h2>
@@ -119,7 +105,7 @@ export function Advantage() {
             Transforming healthcare access with comprehensive solutions for
             patients and providers
           </p>
-        </motion.div>
+        </div>
 
         {/* Advantages Grid */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto'>

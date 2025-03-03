@@ -384,16 +384,9 @@ export function GlobalPresence() {
 
                   <ul className='space-y-3'>
                     {region.highlights.map((highlight, highlightIndex) => (
-                      <motion.li
+                      <li
                         key={highlight}
-                        className='flex items-center text-white/80 text-sm group/item'
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 0.3,
-                          delay: highlightIndex * 0.1,
-                        }}>
+                        className='flex items-center text-white/80 text-sm group/item'>
                         <div className='relative mr-3 flex-shrink-0'>
                           <div
                             className='w-5 h-5 rounded-full flex items-center justify-center border border-white/20 shadow-sm group-hover/item:scale-110 transition-all duration-300'
@@ -405,19 +398,13 @@ export function GlobalPresence() {
                                   ? "linear-gradient(135deg, #0AFFE7, #0A95FF)"
                                   : "linear-gradient(135deg, #0AFF95, #0AFF4F)",
                             }}>
-                            <motion.div
-                              initial={{ scale: 0 }}
-                              whileInView={{ scale: 1 }}
-                              viewport={{ once: true }}
-                              transition={{ delay: highlightIndex * 0.2 }}
-                              className='w-1.5 h-1.5 bg-white rounded-full'
-                            />
+                            <div className='w-1.5 h-1.5 bg-white rounded-full' />
                           </div>
                         </div>
                         <span className='group-hover:text-white transition-colors duration-300 group-hover/item:font-medium'>
                           {highlight}
                         </span>
-                      </motion.li>
+                      </li>
                     ))}
                   </ul>
                 </div>

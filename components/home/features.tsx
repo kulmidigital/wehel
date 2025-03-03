@@ -163,7 +163,7 @@ export function Features() {
   return (
     <section className='relative py-24 bg-[#0A1A2F] overflow-hidden'>
       {/* Background Pattern */}
-      <motion.div className='absolute inset-0' style={{ y }}>
+      <div className='absolute inset-0'>
         <div
           className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]'
           style={{
@@ -173,43 +173,20 @@ export function Features() {
               "radial-gradient(ellipse 50% 80% at 50% 50%, black, transparent)",
           }}
         />
-      </motion.div>
+      </div>
 
       {/* Decorative Gradient Orbs */}
       <div className='absolute inset-0 overflow-hidden'>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
-          className='absolute -top-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20'
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className='absolute -bottom-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20'
-        />
+        <div className='absolute -top-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20' />
+        <div className='absolute -bottom-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20' />
       </div>
 
       <div className='relative container mx-auto px-6'>
         {/* Section Header */}
-        <motion.div
-          className='max-w-2xl mx-auto text-center mb-16'
-          initial='initial'
-          whileInView='animate'
-          viewport={{ once: true }}
-          variants={{
-            initial: { opacity: 0, y: 20 },
-            animate: { opacity: 1, y: 0 },
-          }}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className='inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8'>
+        <div className='max-w-2xl mx-auto text-center mb-16'>
+          <div className='inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8'>
             <span className='text-sm text-[#FFD60A]'>Join Our Network</span>
-          </motion.div>
+          </div>
           <h2 className='text-3xl md:text-4xl font-medium text-white mb-4'>
             Partner with <span className='text-[#FFD60A]'>Wehel</span>
           </h2>
@@ -217,7 +194,7 @@ export function Features() {
             Join our global healthcare network and be part of transforming
             medical tourism
           </p>
-        </motion.div>
+        </div>
 
         {/* Features Grid */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto'>
@@ -251,18 +228,14 @@ export function Features() {
 
                 {/* Card Body */}
                 <div className='relative bg-[#0A1A2F]/80 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden h-full flex flex-col group-hover:border-white/20 transition-all duration-300 shadow-xl shadow-black/50'>
-                  {/* Animated background pattern */}
+                  {/* Animated background pattern - simplified */}
                   <div className='absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500'>
-                    <div className='absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_25%,rgba(255,255,255,0.05)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.05)_75%)] bg-[length:24px_24px] animate-[pattern-shift_60s_linear_infinite]' />
+                    <div className='absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_25%,rgba(255,255,255,0.05)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.05)_75%)] bg-[length:24px_24px]' />
                   </div>
 
-                  {/* Image Container with parallax effect */}
+                  {/* Image Container without parallax effect */}
                   <div className='relative h-[220px] overflow-hidden'>
-                    <motion.div
-                      className='absolute inset-0 h-[120%] w-[120%] -top-[10%] -left-[10%]'
-                      style={{
-                        y: useTransform(scrollYProgress, [0, 1], [0, -30]),
-                      }}>
+                    <div className='absolute inset-0'>
                       <Image
                         src={feature.image}
                         alt={feature.title}
@@ -270,24 +243,18 @@ export function Features() {
                         className='object-cover transition-all duration-700 group-hover:scale-105'
                       />
                       <div className='absolute inset-0 bg-gradient-to-t from-[#0A1A2F] via-[#0A1A2F]/70 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-300' />
-                    </motion.div>
+                    </div>
 
                     {/* Floating badge with glow effect */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      className={`absolute top-4 left-4 px-3 py-1.5 rounded-full ${badgeStyles[index].background} backdrop-blur-md border ${badgeStyles[index].border} shadow-lg transition-all duration-300`}
-                      style={{
-                        boxShadow: `0 0 10px 0 rgba(var(--${index}-glow-color), 0.2)`,
-                      }}>
+                    <div
+                      className={`absolute top-4 left-4 px-3 py-1.5 rounded-full ${badgeStyles[index].background} backdrop-blur-md border ${badgeStyles[index].border} shadow-lg`}>
                       <span
                         className={`text-xs font-medium ${badgeStyles[index].text}`}>
                         {feature.badge}
                       </span>
-                    </motion.div>
+                    </div>
 
-                    {/* Animated corner icon */}
+                    {/* Corner icon */}
                     <div
                       className='absolute top-4 right-4 w-10 h-10 rounded-full bg-gradient-to-br backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0 shadow-lg'
                       style={{
@@ -308,12 +275,12 @@ export function Features() {
                   </div>
 
                   <div className='p-6 flex flex-col flex-1 relative z-10'>
-                    {/* Title with animated underline */}
+                    {/* Title with simple underline */}
                     <div className='relative inline-block mb-3'>
                       <h3 className='text-2xl font-medium text-white transition-all duration-300 group-hover:text-[#FFD60A]'>
                         {feature.title}
                       </h3>
-                      <motion.div
+                      <div
                         className='absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-500 rounded-full'
                         style={{
                           background:
@@ -362,7 +329,7 @@ export function Features() {
                       ))}
                     </ul>
 
-                    {/* Animated button */}
+                    {/* Button without animations */}
                     <div className='relative mt-auto overflow-hidden rounded-xl'>
                       <div
                         className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500'
@@ -390,21 +357,9 @@ export function Features() {
                           <span className='text-white transition-all duration-300 font-medium'>
                             {feature.buttonText || "Join as Partner"}
                           </span>
-                          <motion.div
-                            whileHover={{ scale: 1.1 }}
-                            className='flex items-center justify-center w-8 h-8 rounded-full bg-white/10 group-hover:bg-white/20 transition-all duration-300'>
-                            <motion.div
-                              initial={{ x: 0 }}
-                              animate={{ x: [0, 3, 0] }}
-                              transition={{
-                                duration: 1.5,
-                                repeat: Infinity,
-                                repeatType: "reverse",
-                                ease: "easeInOut",
-                              }}>
-                              <ArrowRight className='h-4 w-4 text-white drop-shadow-md' />
-                            </motion.div>
-                          </motion.div>
+                          <div className='flex items-center justify-center w-8 h-8 rounded-full bg-white/10 group-hover:bg-white/20 transition-all duration-300'>
+                            <ArrowRight className='h-4 w-4 text-white drop-shadow-md' />
+                          </div>
                         </Link>
                       </Button>
                     </div>

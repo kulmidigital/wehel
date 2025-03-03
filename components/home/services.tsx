@@ -80,7 +80,7 @@ export function Services() {
   return (
     <section className='relative py-24 bg-[#0A1A2F] overflow-hidden'>
       {/* Background Pattern */}
-      <motion.div className='absolute inset-0' style={{ y }}>
+      <div className='absolute inset-0'>
         <div
           className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]'
           style={{
@@ -90,43 +90,24 @@ export function Services() {
               "radial-gradient(ellipse 60% 80% at 50% 50%, black, transparent)",
           }}
         />
-      </motion.div>
+      </div>
 
       {/* Decorative Gradient Orbs */}
       <div className='absolute inset-0 overflow-hidden'>
         {/* Top right gradient orb to blend with Features section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
-          className='absolute -top-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20'
-        />
+        <div className='absolute -top-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20' />
         {/* Bottom left gradient orb */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
-          className='absolute -bottom-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20'
-        />
+        <div className='absolute -bottom-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20' />
       </div>
 
       <div className='relative container mx-auto px-6'>
         {/* Section Header */}
-        <motion.div
-          className='max-w-2xl mx-auto text-center mb-16'
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className='inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8'>
+        <div className='max-w-2xl mx-auto text-center mb-16'>
+          <div className='inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8'>
             <span className='text-sm text-[#FFD60A]'>
               Patient-Centered Care
             </span>
-          </motion.div>
+          </div>
           <h2 className='text-3xl md:text-4xl font-medium text-white mb-4'>
             Comprehensive{" "}
             <span className='text-[#FFD60A]'>Patient Services</span>
@@ -135,7 +116,7 @@ export function Services() {
             Your health journey supported at every step, from consultation to
             recovery
           </p>
-        </motion.div>
+        </div>
 
         {/* Services Grid */}
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto'>
@@ -163,18 +144,14 @@ export function Services() {
 
                 {/* Card Body */}
                 <div className='relative bg-[#0A1A2F]/80 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden h-full flex flex-col group-hover:border-white/20 transition-all duration-300 shadow-xl shadow-black/50'>
-                  {/* Animated background pattern */}
+                  {/* Background pattern - simplified */}
                   <div className='absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500'>
-                    <div className='absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_25%,rgba(255,255,255,0.05)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.05)_75%)] bg-[length:24px_24px] animate-[pattern-shift_60s_linear_infinite]' />
+                    <div className='absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_25%,rgba(255,255,255,0.05)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.05)_75%)] bg-[length:24px_24px]' />
                   </div>
 
-                  {/* Service Image with parallax effect */}
+                  {/* Service Image without parallax effect */}
                   <div className='relative h-[200px] overflow-hidden'>
-                    <motion.div
-                      className='absolute inset-0 h-[120%] w-[120%] -top-[10%] -left-[10%]'
-                      style={{
-                        y: useTransform(scrollYProgress, [0, 1], [0, -20]),
-                      }}>
+                    <div className='absolute inset-0'>
                       <Image
                         src={service.image}
                         alt={service.title}
@@ -189,13 +166,10 @@ export function Services() {
                           }40 0%, transparent 100%)`,
                         }}
                       />
-                    </motion.div>
+                    </div>
 
-                    {/* Floating service number */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
+                    {/* Service number without animation */}
+                    <div
                       className='absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20 shadow-lg'
                       style={{
                         background: `linear-gradient(135deg, ${service.color
@@ -203,16 +177,16 @@ export function Services() {
                           .join(", ")})`,
                       }}>
                       <span className='text-white font-bold'>{index + 1}</span>
-                    </motion.div>
+                    </div>
                   </div>
 
                   <div className='p-6 flex flex-col flex-1 relative z-10'>
-                    {/* Title with animated underline */}
+                    {/* Title with simple underline */}
                     <div className='relative inline-block mb-3'>
                       <h3 className='text-2xl font-medium text-white transition-all duration-300 group-hover:text-[#FFD60A]'>
                         {service.title}
                       </h3>
-                      <motion.div
+                      <div
                         className='absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-500 rounded-full'
                         style={{
                           background:
@@ -226,7 +200,7 @@ export function Services() {
                       {service.description}
                     </p>
 
-                    {/* Features List with animated icons */}
+                    {/* Features List without animations */}
                     <ul className='space-y-3 mb-6 flex-1'>
                       {service.features.map((feature, featureIndex) => (
                         <li
