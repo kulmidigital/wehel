@@ -12,6 +12,7 @@ import {
   Users,
   ExternalLink,
   CheckCircle,
+  CheckCircle2,
 } from "lucide-react";
 
 const connections = [
@@ -264,16 +265,9 @@ export function Connections() {
                     {/* Features List with animated icons */}
                     <ul className='space-y-3 mb-6 flex-1'>
                       {connection.features.map((feature, featureIndex) => (
-                        <motion.li
+                        <li
                           key={feature}
-                          className='flex items-center text-sm group/item'
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            duration: 0.3,
-                            delay: featureIndex * 0.1,
-                          }}>
+                          className='flex items-center text-sm group/item'>
                           <div className='relative mr-3 flex-shrink-0'>
                             <div
                               className='w-6 h-6 rounded-full flex items-center justify-center border border-white/20 shadow-sm group-hover/item:scale-110 transition-all duration-300'
@@ -287,24 +281,15 @@ export function Connections() {
                                     ? "linear-gradient(135deg, #0AFF95, #0AFF4F)"
                                     : "linear-gradient(135deg, #FF5E7D, #FF3C64)",
                               }}>
-                              <motion.div
-                                initial={{ rotate: 0 }}
-                                animate={{ rotate: [0, 15, 0] }}
-                                transition={{
-                                  duration: 1.5,
-                                  repeat: Infinity,
-                                  repeatType: "reverse",
-                                  ease: "easeInOut",
-                                  delay: featureIndex * 0.2,
-                                }}>
-                                <CheckCircle className='h-3.5 w-3.5 text-white drop-shadow-md' />
-                              </motion.div>
+                              <div className='flex items-center justify-center'>
+                                <CheckCircle2 className='h-3.5 w-3.5 text-white drop-shadow-md' />
+                              </div>
                             </div>
                           </div>
                           <span className='text-white/80 group-hover:text-white transition-colors duration-300 group-hover/item:font-medium'>
                             {feature}
                           </span>
-                        </motion.li>
+                        </li>
                       ))}
                     </ul>
                   </div>

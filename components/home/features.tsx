@@ -330,16 +330,9 @@ export function Features() {
                     {/* Benefits list with animated icons */}
                     <ul className='space-y-3 mb-6 flex-1'>
                       {feature.benefits.map((benefit, benefitIndex) => (
-                        <motion.li
+                        <li
                           key={benefit}
-                          className='flex items-center text-sm group/item'
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            duration: 0.3,
-                            delay: benefitIndex * 0.1,
-                          }}>
+                          className='flex items-center text-sm group/item'>
                           <div className='relative mr-3 flex-shrink-0'>
                             <div
                               className={`w-6 h-6 rounded-full flex items-center justify-center group-hover/item:scale-110 transition-all duration-300 border border-white/20 shadow-sm`}
@@ -357,24 +350,15 @@ export function Features() {
                                     ? "linear-gradient(135deg, #FF0A5E, #FF0A95)"
                                     : "linear-gradient(135deg, #FFD60A, #FFAA0A)",
                               }}>
-                              <motion.div
-                                initial={{ rotate: 0 }}
-                                animate={{ rotate: [0, 10, 0] }}
-                                transition={{
-                                  duration: 2,
-                                  repeat: Infinity,
-                                  repeatType: "reverse",
-                                  ease: "easeInOut",
-                                  delay: benefitIndex * 0.1,
-                                }}>
+                              <div className='flex items-center justify-center'>
                                 <ArrowRight className='h-3 w-3 text-white drop-shadow-md' />
-                              </motion.div>
+                              </div>
                             </div>
                           </div>
                           <span className='text-white/80 group-hover:text-white transition-colors duration-300 group-hover/item:font-medium'>
                             {benefit}
                           </span>
-                        </motion.li>
+                        </li>
                       ))}
                     </ul>
 

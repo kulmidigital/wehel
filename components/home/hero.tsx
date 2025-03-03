@@ -374,7 +374,8 @@ export function Hero() {
                             border: `1px solid rgba(255,255,255,0.1)`,
                           }}>
                           <feature.icon
-                            className={`w-6 h-6 text-[${feature.color}]`}
+                            className={`w-6 h-6`}
+                            style={{ color: feature.color }}
                           />
                         </div>
                       </div>
