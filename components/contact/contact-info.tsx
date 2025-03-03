@@ -20,7 +20,7 @@ const contact_methods = [
   {
     icon: Phone,
     title: "Call Us",
-    info: "+254 700 000 000",
+    info: "+254 710 961001",
     href: "tel:+254700000000",
   },
 ];

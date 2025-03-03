@@ -12,6 +12,7 @@ import {
   MapPin,
   ArrowRight,
 } from "lucide-react";
+import { PartnerDialog } from "@/components/ui/partner-dialog";
 
 const company_links = [
   { name: "About Us", href: "/about" },
@@ -136,7 +137,7 @@ export function Footer() {
                   href='tel:+254700000000'
                   className='text-sm text-white/60 hover:text-[#FFD60A] transition-colors inline-flex items-center'>
                   <Phone className='h-4 w-4 mr-2 text-[#FFD60A]' />
-                  +254 700 000 000
+                  +254 710 961001
                 </a>
               </li>
               <li className='flex items-start'>
@@ -176,12 +177,14 @@ export function Footer() {
               © {new Date().getFullYear()} Wehel. All rights reserved.
             </p>
             <div className='mt-4 md:mt-0'>
-              <Link
-                href='/request-invite'
-                className='text-sm text-[#FFD60A] hover:text-[#FFD60A]/80 transition-colors inline-flex items-center group'>
-                Start Your Healthcare Journey
-                <ArrowRight className='h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform' />
-              </Link>
+              <PartnerDialog
+                trigger={
+                  <button className='text-sm text-[#FFD60A] hover:text-[#FFD60A]/80 transition-colors inline-flex items-center group'>
+                    Start Your Healthcare Journey
+                    <ArrowRight className='h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform' />
+                  </button>
+                }
+              />
             </div>
           </div>
         </div>
