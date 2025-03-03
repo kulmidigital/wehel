@@ -233,7 +233,7 @@ export function TravelAgencyForm() {
                   <FormControl>
                     <Input
                       placeholder='Travel Agency Name'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -252,7 +252,7 @@ export function TravelAgencyForm() {
                   <FormControl>
                     <Input
                       placeholder='www.youragency.com'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -271,7 +271,7 @@ export function TravelAgencyForm() {
                   <FormControl>
                     <Input
                       placeholder='City, Country'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -291,7 +291,7 @@ export function TravelAgencyForm() {
                     <Input
                       type='number'
                       placeholder='Number of years'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -320,7 +320,7 @@ export function TravelAgencyForm() {
                   <FormControl>
                     <Input
                       placeholder='Full name'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -339,7 +339,7 @@ export function TravelAgencyForm() {
                   <FormControl>
                     <Input
                       placeholder='e.g., Medical Tourism Manager'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -359,7 +359,7 @@ export function TravelAgencyForm() {
                     <Input
                       type='email'
                       placeholder='contact@agency.com'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -379,7 +379,7 @@ export function TravelAgencyForm() {
                     <Input
                       type='tel'
                       placeholder='+1234567890'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -411,7 +411,7 @@ export function TravelAgencyForm() {
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Thailand, India, Turkey'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -433,7 +433,7 @@ export function TravelAgencyForm() {
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Travel arrangements, Medical appointments, Translation services'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -455,7 +455,7 @@ export function TravelAgencyForm() {
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Past medical tourism projects, number of patients served'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -491,13 +491,13 @@ export function TravelAgencyForm() {
                   <div
                     className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-colors ${
                       index <= currentStep
-                        ? "border-[#4ade80] bg-[#4ade80]/10"
+                        ? "border-[#FFD60A] bg-[#FFD60A]/10"
                         : "border-white/20 bg-white/5"
-                    } group-hover:border-[#4ade80]/70`}>
+                    } group-hover:border-[#FFD60A]/70`}>
                     <step.icon
                       className={`w-5 h-5 ${
                         index <= currentStep
-                          ? "text-[#4ade80]"
+                          ? "text-[#FFD60A]"
                           : "text-white/40"
                       }`}
                     />
@@ -514,7 +514,7 @@ export function TravelAgencyForm() {
               {index < steps.length - 1 && (
                 <div className='w-20 mx-2 h-[2px] bg-white/20'>
                   <div
-                    className={`h-full bg-[#4ade80] transition-all duration-300 ${
+                    className={`h-full bg-[#FFD60A] transition-all duration-300 ${
                       index < currentStep ? "w-full" : "w-0"
                     }`}
                   />
@@ -530,7 +530,7 @@ export function TravelAgencyForm() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className='bg-[#026da7]/90 backdrop-blur-md rounded-xl p-8 border-2 border-white/10 shadow-lg'>
+        className='bg-white/5 backdrop-blur-md rounded-xl p-8 border border-white/10'>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
             <AnimatePresence mode='wait'>
@@ -548,17 +548,8 @@ export function TravelAgencyForm() {
               </Button>
               <Button
                 type='submit'
-                className='bg-[#4ade80] text-[#ffffff] hover:bg-[#4ade80]/90 font-bold shadow-lg border-2 border-[#4ade80]/80 hover:scale-105 transition-transform duration-300 relative overflow-hidden group'>
-                <span className='relative z-10'>
-                  {currentStep === steps.length - 1 ? "Submit" : "Next"}
-                </span>
-                {/* Button background animation */}
-                <motion.div
-                  className='absolute inset-0 w-full h-full bg-[#22c55e] -z-10'
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
+                className='bg-[#FFD60A] text-[#0A1A2F] hover:bg-[#FFD60A]/90'>
+                {currentStep === steps.length - 1 ? "Submit" : "Next"}
               </Button>
             </div>
           </form>

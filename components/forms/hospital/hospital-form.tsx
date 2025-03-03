@@ -227,7 +227,7 @@ export function HospitalForm() {
                   <FormControl>
                     <Input
                       placeholder='Enter hospital name'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -246,7 +246,7 @@ export function HospitalForm() {
                   <FormControl>
                     <Input
                       placeholder='City, Country'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -265,7 +265,7 @@ export function HospitalForm() {
                   <FormControl>
                     <Textarea
                       placeholder='List your hospital accreditations'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -284,7 +284,7 @@ export function HospitalForm() {
                   <FormControl>
                     <Textarea
                       placeholder='List your medical specializations'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -313,7 +313,7 @@ export function HospitalForm() {
                   <FormControl>
                     <Input
                       placeholder='Full name'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -333,7 +333,7 @@ export function HospitalForm() {
                     <Input
                       type='email'
                       placeholder='email@hospital.com'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -353,7 +353,7 @@ export function HospitalForm() {
                     <Input
                       type='tel'
                       placeholder='+1234567890'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -372,7 +372,7 @@ export function HospitalForm() {
                   <FormControl>
                     <Input
                       placeholder='Job title'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -402,7 +402,7 @@ export function HospitalForm() {
                     <Input
                       type='number'
                       placeholder='Total bed capacity'
-                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -424,7 +424,7 @@ export function HospitalForm() {
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Operating Rooms, ICU, Diagnostic Imaging...'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -446,7 +446,7 @@ export function HospitalForm() {
                   <FormControl>
                     <Textarea
                       placeholder='e.g., Language Support, Travel Assistance...'
-                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base placeholder:text-white/50'
+                      className='bg-white/5 border-white/10 text-white min-h-[100px] text-[11px] md:text-base placeholder:text-[11px] md:placeholder:text-base'
                       {...field}
                     />
                   </FormControl>
@@ -482,13 +482,13 @@ export function HospitalForm() {
                   <div
                     className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-colors ${
                       index <= currentStep
-                        ? "border-[#4ade80] bg-[#4ade80]/10"
+                        ? "border-[#FFD60A] bg-[#FFD60A]/10"
                         : "border-white/20 bg-white/5"
-                    } group-hover:border-[#4ade80]/70`}>
+                    } group-hover:border-[#FFD60A]/70`}>
                     <step.icon
                       className={`w-5 h-5 ${
                         index <= currentStep
-                          ? "text-[#4ade80]"
+                          ? "text-[#FFD60A]"
                           : "text-white/40"
                       }`}
                     />
@@ -505,7 +505,7 @@ export function HospitalForm() {
               {index < steps.length - 1 && (
                 <div className='w-20 mx-2 h-[2px] bg-white/20'>
                   <div
-                    className={`h-full bg-[#4ade80] transition-all duration-300 ${
+                    className={`h-full bg-[#FFD60A] transition-all duration-300 ${
                       index < currentStep ? "w-full" : "w-0"
                     }`}
                   />
@@ -521,7 +521,7 @@ export function HospitalForm() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className='bg-[#026da7]/90 backdrop-blur-md rounded-xl p-8 border-2 border-white/10 shadow-lg'>
+        className='bg-white/5 backdrop-blur-md rounded-xl p-8 border border-white/10'>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
             <AnimatePresence mode='wait'>
@@ -539,17 +539,8 @@ export function HospitalForm() {
               </Button>
               <Button
                 type='submit'
-                className='bg-[#4ade80] text-[#ffffff] hover:bg-[#4ade80]/90 font-bold shadow-lg border-2 border-[#4ade80]/80 hover:scale-105 transition-transform duration-300 relative overflow-hidden group'>
-                <span className='relative z-10'>
+                className='bg-[#FFD60A] text-[#0A1A2F] hover:bg-[#FFD60A]/90'>
                 {currentStep === steps.length - 1 ? "Submit" : "Next"}
-                </span>
-                {/* Button background animation */}
-                <motion.div
-                  className='absolute inset-0 w-full h-full bg-[#22c55e] -z-10'
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
               </Button>
             </div>
           </form>

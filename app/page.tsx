@@ -8,7 +8,7 @@ import { GlobalPresence } from "@/components/home/global_presence";
 
 export default function Home() {
   return (
-    <main className='bg-[#0284C7]'>
+    <main className='bg-[#0A1A2F]'>
       <Hero />
       <Features />
       <Services />

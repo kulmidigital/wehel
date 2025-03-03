@@ -21,23 +21,20 @@ const fadeIn = {
 const features = [
   {
     title: "Global Network",
-    description: "Access to international healthcare facilities",
     icon: Globe,
-    gradient: "from-[#4ADE80] to-[#22C55E]",
+    gradient: "from-[#FFD60A] to-[#FF8A0A]",
     delay: 0.2,
   },
   {
     title: "Smart Care",
-    description: "Personalized medical treatment plans",
     icon: Stethoscope,
-    gradient: "from-[#0EA5E9] to-[#0284C7]",
+    gradient: "from-[#0AFFE7] to-[#0A95FF]",
     delay: 0.3,
   },
   {
     title: "Patient-Centric",
-    description: "Your health journey, your way",
     icon: Heart,
-    gradient: "from-[#38BDF8] to-[#4ADE80]",
+    gradient: "from-[#FF0AE7] to-[#B30AFF]",
     delay: 0.4,
   },
 ];
@@ -129,12 +126,12 @@ const partnerLinks = [
 
 export function Hero() {
   return (
-    <div className='relative min-h-screen overflow-hidden bg-[#0284C7]'>
+    <div className='relative min-h-screen overflow-hidden bg-[#0A1A2F]'>
       {/* Animated Background Elements */}
       <div className='absolute inset-0 overflow-hidden'>
         {/* Original grid pattern */}
         <div
-          className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:3rem_3rem]'
+          className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:3rem_3rem]'
           style={{
             maskImage:
               "radial-gradient(ellipse 80% 50% at 50% 0%, black 70%, transparent 110%)",
@@ -148,19 +145,19 @@ export function Hero() {
           variants={floatingAnimation1}
           initial='initial'
           animate='animate'
-          className='absolute top-1/4 left-1/4 w-6 h-6 md:w-12 md:h-12 bg-[#4ADE80] rounded-full blur-[15px] md:blur-[30px] opacity-30'
+          className='absolute top-1/4 left-1/4 w-6 h-6 md:w-12 md:h-12 bg-[#FFD60A] rounded-full blur-[15px] md:blur-[30px] opacity-10'
         />
         <motion.div
           variants={floatingAnimation2}
           initial='initial'
           animate='animate'
-          className='absolute top-1/2 right-1/4 w-4 h-4 md:w-10 md:h-10 bg-[#38BDF8] rounded-full blur-[12px] md:blur-[25px] opacity-30'
+          className='absolute top-1/2 right-1/4 w-4 h-4 md:w-10 md:h-10 bg-blue-400 rounded-full blur-[12px] md:blur-[25px] opacity-10'
         />
         <motion.div
           variants={floatingAnimation3}
           initial='initial'
           animate='animate'
-          className='absolute bottom-1/3 left-1/2 w-5 h-5 md:w-11 md:h-11 bg-[#22C55E] rounded-full blur-[14px] md:blur-[28px] opacity-30'
+          className='absolute bottom-1/3 left-1/2 w-5 h-5 md:w-11 md:h-11 bg-purple-400 rounded-full blur-[14px] md:blur-[28px] opacity-10'
         />
 
         {/* Bottom left gradient orb */}
@@ -168,7 +165,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ duration: 1 }}
-          className='absolute -bottom-32 -left-32 w-64 h-64 bg-[#4ADE80] rounded-full blur-[120px] opacity-40'
+          className='absolute -bottom-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20'
         />
 
         {/* Simplified gradient ring - reduced animation complexity */}
@@ -190,10 +187,10 @@ export function Hero() {
                 ease: "easeInOut",
               },
             }}
-            className='w-[280px] sm:w-[400px] md:w-[600px] lg:w-[800px] h-[280px] sm:h-[400px] md:h-[600px] lg:h-[800px] border border-white/20 rounded-full'
+            className='w-[280px] sm:w-[400px] md:w-[600px] lg:w-[800px] h-[280px] sm:h-[400px] md:h-[600px] lg:h-[800px] border border-white/5 rounded-full'
             style={{
               background:
-                "radial-gradient(circle, transparent 60%, rgba(74,222,128,0.15) 70%)",
+                "radial-gradient(circle, transparent 60%, rgba(255,214,10,0.05) 70%)",
             }}
           />
         </div>
@@ -204,9 +201,10 @@ export function Hero() {
         <div className='max-w-4xl mx-auto text-center'>
           {/* Announcement Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className='inline-flex items-center px-4 py-2 rounded-full bg-[#026da7] backdrop-blur-sm border-2 border-[#4ade80]/40 mb-8 shadow-lg text-white'>
+            transition={{ duration: 0.5 }}
+            className='inline-flex mb-8 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-sm text-white/80'>
             Transforming Healthcare Access Globally
           </motion.div>
 
@@ -218,14 +216,14 @@ export function Hero() {
             className='mb-8 text-4xl font-medium tracking-tight text-white md:text-6xl lg:text-7xl'>
             Your Gateway to{" "}
             <span className='relative inline-block'>
-              <span className='relative z-10 text-[#4ADE80] font-semibold'>
+              <span className='relative z-10 text-[#FFD60A]'>
                 Global Healthcare
               </span>
               <motion.span
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className='absolute bottom-2 left-0 h-3 w-full origin-left -rotate-2 bg-[#4ADE80]/30'
+                className='absolute bottom-2 left-0 h-3 w-full origin-left -rotate-2 bg-[#FFD60A]/10'
               />
             </span>
           </motion.h1>
@@ -235,7 +233,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className='mb-12 text-lg text-white max-w-2xl mx-auto'>
+            className='mb-12 text-lg text-white/60 max-w-2xl mx-auto'>
             Experience world-class medical care with personalized support every
             step of the way. Your health journey begins here.
           </motion.p>
@@ -245,29 +243,22 @@ export function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className='flex flex-col sm:flex-row items-center justify-center gap-4 mb-24'>
+            className='flex flex-col sm:flex-row items-center justify-center gap-4 mb-20'>
             <Dialog>
               <DialogTrigger asChild>
                 <Button
                   size='lg'
-                  className='w-full sm:w-auto min-w-[200px] h-12 bg-[#4ADE80] hover:bg-[#22C55E] text-white font-bold px-8 shadow-lg border-2 border-[#4ADE80]/80 hover:scale-105 transition-transform duration-300 relative overflow-hidden group'>
-                  <span className='relative z-10'>Start Your Journey</span>
-                  {/* Button background animation */}
-                  <motion.div
-                    className='absolute inset-0 w-full h-full bg-[#22c55e] -z-10'
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  className='relative w-full sm:w-auto min-w-[200px] h-12 bg-[#FFD60A] hover:bg-[#FFD60A]/90 text-[#0A1A2F] font-medium px-8'>
+                  Start Your Journey
                 </Button>
               </DialogTrigger>
-              <DialogContent className='bg-[#0284C7] border-white/30 w-[95vw] max-w-3xl p-6 md:p-8'>
+              <DialogContent className='bg-[#0A1A2F] border-white/10 w-[95vw] max-w-3xl p-6 md:p-8'>
                 <DialogHeader className='relative pb-6 text-center md:text-left'>
                   <DialogTitle className='text-2xl md:text-3xl text-white'>
                     Choose Your Path
                   </DialogTitle>
                   <DialogTrigger asChild>
-                    <button className='absolute right-0 top-0 p-2 rounded-full bg-white/20 hover:bg-white/30 text-white hover:text-white transition-colors'>
+                    <button className='absolute right-0 top-0 p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/80 hover:text-white transition-colors'>
                       <X className='w-5 h-5' />
                     </button>
                   </DialogTrigger>
@@ -277,11 +268,11 @@ export function Hero() {
                     <Link
                       key={link.title}
                       href={link.href}
-                      className='group block p-4 md:p-6 rounded-xl bg-[#026da7] hover:bg-[#026da7]/90 border-2 border-white/30 hover:border-[#4ADE80]/60 transition-all duration-200 shadow-md hover:shadow-lg'>
-                      <h3 className='text-lg md:text-xl font-bold text-white mb-2 group-hover:text-[#4ADE80] transition-colors'>
+                      className='group block p-4 md:p-6 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-200 hover:border-white/20'>
+                      <h3 className='text-lg md:text-xl font-medium text-white mb-2 group-hover:text-[#FFD60A] transition-colors'>
                         {link.title}
                       </h3>
-                      <p className='text-sm md:text-base text-white/90 group-hover:text-white transition-colors'>
+                      <p className='text-sm md:text-base text-white/60 group-hover:text-white/80 transition-colors'>
                         {link.description}
                       </p>
                     </Link>
@@ -291,7 +282,7 @@ export function Hero() {
             </Dialog>
             <Button
               size='lg'
-              className='w-full sm:w-auto min-w-[200px] h-12 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 border-2 border-white/30 hover:border-white/50 px-8 font-bold hover:scale-105 transition-transform duration-300'
+              className='w-full sm:w-auto min-w-[200px] h-12 bg-white/5 backdrop-blur-sm text-white hover:bg-white/10 border-0 px-8'
               asChild>
               <Link href='/about'>Learn More</Link>
             </Button>
@@ -310,33 +301,43 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: feature.delay }}
                 whileHover={{
-                  scale: 1.03,
-                  y: -5,
+                  scale: 1.02,
                   transition: { duration: 0.2 },
                 }}
                 className='group relative'>
-                {/* Card background */}
-                <div className='relative bg-[#026da7] border-2 border-white/30 group-hover:border-[#4ADE80]/60 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 h-full'>
-                  {/* Icon container */}
-                  <div className='mb-4 flex justify-center'>
-                    <div
-                      className={`w-16 h-16 rounded-full flex items-center justify-center bg-gradient-to-br ${feature.gradient} shadow-md`}>
-                      <feature.icon className='w-8 h-8 text-white group-hover:scale-110 transition-transform duration-300' />
-                    </div>
-                  </div>
+                {/* Gradient background */}
+                <div
+                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${feature.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-300`}
+                />
 
-                  {/* Content */}
-                  <div className='text-center'>
-                    <h3 className='text-xl font-bold text-white group-hover:text-[#4ADE80] transition-colors mb-2'>
+                {/* Content */}
+                <div className='relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-[140px] overflow-hidden flex flex-col items-center justify-center'>
+                  <div className='relative z-10 text-center'>
+                    <div className='mb-4 flex justify-center'>
+                      <feature.icon
+                        className={`w-8 h-8 group-hover:scale-110 transition-transform duration-300 ${
+                          feature.gradient.includes("FFD60A")
+                            ? "text-[#FFD60A]"
+                            : feature.gradient.includes("0AFFE7")
+                            ? "text-[#0AFFE7]"
+                            : "text-[#FF0AE7]"
+                        }`}
+                      />
+                    </div>
+                    <h3 className='text-2xl font-medium text-white group-hover:text-[#FFD60A] transition-colors'>
                       {feature.title}
                     </h3>
-                    <p className='text-white/90 text-sm group-hover:text-white transition-colors'>
-                      {feature.description}
-                    </p>
                   </div>
 
-                  {/* Accent line */}
-                  <div className='mt-4 h-1 w-16 mx-auto bg-gradient-to-r from-white/40 to-transparent rounded-full group-hover:from-[#4ADE80]/60 group-hover:to-transparent transition-colors duration-300'></div>
+                  {/* Decorative elements */}
+                  <div
+                    className='absolute -right-6 -bottom-6 w-24 h-24 rounded-full bg-gradient-to-br opacity-20 group-hover:opacity-40 transition-all duration-300 group-hover:scale-110'
+                    style={{
+                      backgroundImage: `linear-gradient(to bottom right, ${
+                        feature.gradient.split(" ")[1]
+                      }, ${feature.gradient.split(" ")[3]})`,
+                    }}
+                  />
                 </div>
               </motion.div>
             ))}

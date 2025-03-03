@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
@@ -11,6 +11,7 @@ import {
   Stethoscope,
   Users,
   ExternalLink,
+  CheckCircle,
 } from "lucide-react";
 
 const connections = [
@@ -26,6 +27,7 @@ const connections = [
       "Post-treatment support",
     ],
     image: "/images/application.webp",
+    color: "from-cyan-400 via-blue-500 to-indigo-600",
   },
   {
     title: "Insurance Integration",
@@ -39,6 +41,7 @@ const connections = [
       "Simplified claims process",
     ],
     image: "/images/insurance.webp",
+    color: "from-amber-400 via-orange-500 to-pink-600",
   },
   {
     title: "Medical Excellence",
@@ -52,6 +55,7 @@ const connections = [
       "Medical expertise",
     ],
     image: "/images/hospital-emergency.webp",
+    color: "from-emerald-400 via-teal-500 to-green-600",
   },
   {
     title: "Cultural Adaptation",
@@ -65,12 +69,49 @@ const connections = [
       "Local guidance",
     ],
     image: "/images/small-globe.webp",
+    color: "from-purple-400 via-violet-500 to-indigo-600",
   },
 ];
 
+const cardVariants = {
+  initial: { opacity: 0, y: 20 },
+  animate: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: index * 0.2,
+      duration: 0.5,
+      ease: [0.4, 0, 0.2, 1],
+    },
+  }),
+  hover: {
+    y: -8,
+    transition: {
+      duration: 0.3,
+      ease: [0.4, 0, 0.2, 1],
+    },
+  },
+};
+
 export function Connections() {
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
   return (
-    <section className='relative py-24 bg-[#0284C7] overflow-hidden'>
+    <section className='relative py-24'>
+      {/* Background Pattern */}
+      <motion.div className='absolute inset-0' style={{ y }}>
+        <div
+          className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]'
+          style={{
+            maskImage:
+              "radial-gradient(ellipse 60% 80% at 50% 50%, black, transparent)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 60% 80% at 50% 50%, black, transparent)",
+          }}
+        />
+      </motion.div>
+
       {/* Decorative Gradient Orbs */}
       <div className='absolute inset-0 overflow-hidden'>
         {/* Top left gradient orb to blend with Services section's bottom left */}
@@ -78,33 +119,38 @@ export function Connections() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ duration: 1 }}
-          className='absolute -top-32 -left-32 w-64 h-64 bg-[#4ADE80] rounded-full blur-[120px] opacity-30'
+          className='absolute -top-32 -left-32 w-64 h-64 bg-[#FFD60A] rounded-full blur-[120px] opacity-20'
         />
         {/* Bottom right gradient orb */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ duration: 1 }}
-          className='absolute -bottom-32 -right-32 w-64 h-64 bg-[#38BDF8] rounded-full blur-[120px] opacity-30'
+          className='absolute -bottom-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20'
         />
       </div>
 
-      {/* Background Pattern */}
-      <div className='absolute inset-0 bg-[linear-gradient(60deg,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(-60deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20'></div>
-
-      <div className='container px-6 mx-auto relative'>
+      <div className='container px-6 mx-auto'>
         {/* Section Header */}
         <motion.div
           className='max-w-3xl mx-auto text-center mb-16'
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className='inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8'>
+            <span className='text-sm text-[#FFD60A]'>Global Network</span>
+          </motion.div>
           <h2 className='text-3xl md:text-4xl font-medium text-white mb-4'>
             Building Strong{" "}
-            <span className='text-[#4ADE80]'>Global Healthcare</span>{" "}
+            <span className='text-[#FFD60A]'>Global Healthcare</span>{" "}
             Connections
           </h2>
-          <p className='text-white text-lg'>
+          <p className='text-white/60'>
             We bridge the gap between patients, hospitals, and healthcare
             providers, fostering collaborations that enhance medical
             accessibility and efficiency.
@@ -116,68 +162,152 @@ export function Connections() {
           {connections.map((connection, index) => (
             <motion.div
               key={connection.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              custom={index}
+              initial='initial'
+              whileInView='animate'
+              whileHover='hover'
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{
-                y: -5,
-                transition: { duration: 0.2 },
-              }}
-              className='group'>
-              <div className='bg-white/15 backdrop-blur-md border border-white/30 rounded-xl overflow-hidden shadow-lg transition-all duration-300 h-full flex flex-col'>
-                <div className='relative h-[200px] overflow-hidden'>
-                  <Image
-                    src={connection.image}
-                    alt={connection.title}
-                    fill
-                    className='object-cover transition-all duration-700 group-hover:scale-105 group-hover:rotate-1'
-                  />
-                  {/* Diagonal gradient overlay */}
-                  <div className='absolute inset-0 bg-gradient-to-tr from-[#0284C7]/95 via-[#0284C7]/70 to-transparent opacity-90 group-hover:opacity-75 transition-opacity duration-300' />
+              variants={cardVariants}
+              className='group relative perspective-1000'>
+              {/* 3D Card Container */}
+              <div className='relative h-full transform-style-3d transition-all duration-500 group-hover:rotate-y-3 group-hover:rotate-x-3'>
+                {/* Animated glow effect */}
+                <div
+                  className='absolute -inset-0.5 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500'
+                  style={{
+                    background: `linear-gradient(135deg, ${connection.color
+                      .split(" ")
+                      .join(", ")})`,
+                  }}
+                />
 
-                  {/* Decorative pattern overlay */}
-                  <div className='absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(-45deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-0 group-hover:opacity-30 transition-opacity duration-500' />
+                {/* Card Body */}
+                <div className='relative bg-[#0A1A2F]/80 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden h-full flex flex-col group-hover:border-white/20 transition-all duration-300 shadow-xl shadow-black/50'>
+                  {/* Animated background pattern */}
+                  <div className='absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500'>
+                    <div className='absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_25%,rgba(255,255,255,0.05)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.05)_75%)] bg-[length:24px_24px] animate-[pattern-shift_60s_linear_infinite]' />
+                  </div>
 
-                  <connection.icon className='absolute bottom-4 left-4 w-8 h-8 text-[#4ADE80] z-10 group-hover:scale-110 transition-transform duration-300' />
-                </div>
-
-                <div className='p-6 flex-1 flex flex-col'>
-                  {/* Decorative accent line */}
-                  <div className='h-1 w-1/3 bg-gradient-to-r from-[#4ADE80] to-transparent rounded-full mb-4'></div>
-
-                  <h3 className='text-lg font-medium text-white mb-2 group-hover:text-[#4ADE80] transition-colors duration-300'>
-                    {connection.title}
-                  </h3>
-                  <p className='text-white text-sm mb-4'>
-                    {connection.description}
-                  </p>
-                  <ul className='space-y-3 mb-2 flex-1'>
-                    {connection.features.map((feature, featureIndex) => (
-                      <li
-                        key={feature}
-                        className='flex items-center text-sm group/item'
+                  {/* Connection Image with parallax effect */}
+                  <div className='relative h-[220px] overflow-hidden'>
+                    <motion.div
+                      className='absolute inset-0 h-[120%] w-[120%] -top-[10%] -left-[10%]'
+                      style={{
+                        y: useTransform(scrollYProgress, [0, 1], [0, -20]),
+                      }}>
+                      <Image
+                        src={connection.image}
+                        alt={connection.title}
+                        fill
+                        className='object-cover transition-all duration-700 group-hover:scale-110'
+                      />
+                      <div
+                        className='absolute inset-0 opacity-90 group-hover:opacity-70 transition-opacity duration-300'
                         style={{
-                          transform: "translateX(0)",
-                          transition: `transform 0.2s ease-out ${
-                            featureIndex * 0.05
-                          }s`,
+                          background: `linear-gradient(to top, #0A1A2F 10%, transparent 100%), linear-gradient(to right, ${
+                            connection.color.split(" ")[0]
+                          }40 0%, transparent 100%)`,
                         }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = "translateX(4px)";
+                      />
+                    </motion.div>
+
+                    {/* Animated icon */}
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className='absolute bottom-6 left-6 w-14 h-14 rounded-2xl flex items-center justify-center backdrop-blur-md border border-white/20 shadow-lg z-10'
+                      style={{
+                        background: `linear-gradient(135deg, ${connection.color
+                          .split(" ")
+                          .join(", ")})`,
+                      }}>
+                      <motion.div
+                        animate={{
+                          rotate: [0, 5, 0, -5, 0],
+                          scale: [1, 1.05, 1, 1.05, 1],
                         }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = "translateX(0)";
+                        transition={{
+                          duration: 5,
+                          repeat: Infinity,
+                          repeatType: "loop",
                         }}>
-                        <div className='h-5 w-5 rounded-full flex items-center justify-center mr-2 shrink-0 bg-white/10 border border-white/20 group-hover/item:border-[#4ADE80]/50 transition-all duration-300'>
-                          <ArrowRight className='h-3 w-3 text-[#4ADE80] group-hover/item:translate-x-0.5 transition-transform duration-300' />
-                        </div>
-                        <span className='text-white font-medium group-hover/item:text-[#4ADE80] transition-colors duration-300'>
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                        <connection.icon className='w-7 h-7 text-white drop-shadow-lg' />
+                      </motion.div>
+                    </motion.div>
+                  </div>
+
+                  <div className='p-6 flex flex-col flex-1 relative z-10'>
+                    {/* Title with animated underline */}
+                    <div className='relative inline-block mb-3'>
+                      <h3 className='text-2xl font-medium text-white transition-all duration-300 group-hover:text-[#FFD60A]'>
+                        {connection.title}
+                      </h3>
+                      <motion.div
+                        className='absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-500 rounded-full'
+                        style={{
+                          background: `linear-gradient(to right, ${connection.color
+                            .split(" ")
+                            .join(", ")})`,
+                          boxShadow: `0 0 10px 0 ${
+                            connection.color.split(" ")[0]
+                          }`,
+                        }}
+                      />
+                    </div>
+
+                    <p className='text-white/70 text-sm mb-5 group-hover:text-white/90 transition-colors duration-300'>
+                      {connection.description}
+                    </p>
+
+                    {/* Features List with animated icons */}
+                    <ul className='space-y-3 mb-6 flex-1'>
+                      {connection.features.map((feature, featureIndex) => (
+                        <motion.li
+                          key={feature}
+                          className='flex items-center text-sm group/item'
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            duration: 0.3,
+                            delay: featureIndex * 0.1,
+                          }}>
+                          <div className='relative mr-3 flex-shrink-0'>
+                            <div
+                              className='w-6 h-6 rounded-full flex items-center justify-center border border-white/20 shadow-sm group-hover/item:scale-110 transition-all duration-300'
+                              style={{
+                                background:
+                                  index === 0
+                                    ? "linear-gradient(135deg, #FFD60A, #FF8A0A)"
+                                    : index === 1
+                                    ? "linear-gradient(135deg, #0AFFE7, #0A95FF)"
+                                    : index === 2
+                                    ? "linear-gradient(135deg, #0AFF95, #0AFF4F)"
+                                    : "linear-gradient(135deg, #FF5E7D, #FF3C64)",
+                              }}>
+                              <motion.div
+                                initial={{ rotate: 0 }}
+                                animate={{ rotate: [0, 15, 0] }}
+                                transition={{
+                                  duration: 1.5,
+                                  repeat: Infinity,
+                                  repeatType: "reverse",
+                                  ease: "easeInOut",
+                                  delay: featureIndex * 0.2,
+                                }}>
+                                <CheckCircle className='h-3.5 w-3.5 text-white drop-shadow-md' />
+                              </motion.div>
+                            </div>
+                          </div>
+                          <span className='text-white/80 group-hover:text-white transition-colors duration-300 group-hover/item:font-medium'>
+                            {feature}
+                          </span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -192,22 +322,21 @@ export function Connections() {
           viewport={{ once: true }}>
           <Button
             size='lg'
-            className='relative overflow-hidden bg-[#4ADE80] hover:bg-[#22C55E] text-white font-medium px-8 shadow-lg group'
+            className='bg-[#FFD60A] hover:bg-[#FFD60A]/90 text-[#0A1A2F] font-medium px-8 group'
             asChild>
             <Link href='/contact' className='flex items-center'>
-              <span className='relative z-10'>Connect With Us</span>
+              Connect With Us
               <motion.div
-                className='relative z-10 ml-2 p-1 rounded-full bg-[#0F172A]/10 group-hover:bg-[#0F172A]/20 transition-colors duration-300'
-                whileHover={{ rotate: 45 }}>
-                <ExternalLink className='h-4 w-4' />
+                className='ml-2 transition-all duration-300 group-hover:ml-3'
+                animate={{ x: [0, 3, 0] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                }}>
+                <ArrowRight className='h-4 w-4' />
               </motion.div>
-              {/* Button background animation */}
-              <motion.div
-                className='absolute inset-0 w-full h-full bg-[#22C55E] -z-10'
-                initial={{ x: "-100%" }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
             </Link>
           </Button>
         </motion.div>

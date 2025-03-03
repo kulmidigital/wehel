@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Globe2, Users, Clock, ExternalLink } from "lucide-react";
+import { ArrowRight, Globe2, Users, Clock } from "lucide-react";
 
 const features = [
   {
@@ -24,33 +24,13 @@ const features = [
   },
 ];
 
-// Animation variants for staggered animations
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
-};
-
 export function CTA() {
   return (
     <section className='relative py-24 overflow-hidden'>
       {/* Background Elements */}
       <div className='absolute inset-0'>
-        <div className='absolute inset-0 bg-gradient-to-b from-[#0284c7]/98 via-[#0284c7]/95 to-[#0284c7]/98 z-10' />
-        <div className='absolute inset-0 bg-[#0284c7]/60' />
+        <div className='absolute inset-0 bg-gradient-to-b from-[#0A1A2F]/98 via-[#0A1A2F]/95 to-[#0A1A2F]/98 z-10' />
+        <div className='absolute inset-0 bg-[#0A1A2F]/60' />
         <Image
           src='/images/hospital-bed.webp'
           alt='Healthcare Facility'
@@ -63,31 +43,13 @@ export function CTA() {
       {/* Grid Pattern */}
       <div className='absolute inset-0 z-20'>
         <div
-          className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:4rem_4rem]'
+          className='absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]'
           style={{
             maskImage:
               "radial-gradient(ellipse 50% 80% at 50% 50%, black, transparent)",
             WebkitMaskImage:
               "radial-gradient(ellipse 50% 80% at 50% 50%, black, transparent)",
           }}
-        />
-      </div>
-
-      {/* Decorative Gradient Orbs */}
-      <div className='absolute inset-0 overflow-hidden z-10'>
-        {/* Top right gradient orb */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
-          className='absolute -top-32 -right-32 w-64 h-64 bg-[#4ade80] rounded-full blur-[120px] opacity-30'
-        />
-        {/* Bottom left gradient orb */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
-          className='absolute -bottom-32 -left-32 w-64 h-64 bg-[#38bdf8] rounded-full blur-[120px] opacity-30'
         />
       </div>
 
@@ -99,8 +61,8 @@ export function CTA() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className='inline-flex items-center px-4 py-2 rounded-full bg-[#026da7] backdrop-blur-sm border-2 border-[#4ade80]/40 mb-8 shadow-lg'>
-              <span className='text-sm font-bold text-[#4ade80]'>
+              className='inline-flex items-center px-4 py-2 rounded-full bg-[#FFD60A]/10 backdrop-blur-sm border border-[#FFD60A]/20 mb-8'>
+              <span className='text-sm text-[#FFD60A] font-medium'>
                 Join Wehel Today
               </span>
             </motion.div>
@@ -109,10 +71,10 @@ export function CTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className='text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6'>
+              className='text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-6'>
               Begin Your Journey to{" "}
               <span className='relative inline-block'>
-                <span className='relative z-10 text-[#4ade80]'>
+                <span className='relative z-10 text-[#FFD60A]'>
                   World-Class Healthcare
                 </span>
                 <motion.span
@@ -120,7 +82,7 @@ export function CTA() {
                   whileInView={{ width: "100%" }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className='absolute bottom-2 left-0 h-4 w-full -rotate-2 bg-[#4ade80]/20'
+                  className='absolute bottom-2 left-0 h-3 w-full -rotate-2 bg-[#FFD60A]/10'
                 />
               </span>
             </motion.h2>
@@ -129,7 +91,7 @@ export function CTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className='text-lg text-white max-w-2xl mx-auto mb-12'>
+              className='text-lg text-white/80 max-w-2xl mx-auto mb-12'>
               Join thousands of patients who have trusted Wehel to guide them
               through their medical journey. Let us help you access world-class
               healthcare with confidence.
@@ -138,30 +100,26 @@ export function CTA() {
 
           {/* Features Grid */}
           <motion.div
-            variants={containerVariants}
-            initial='hidden'
-            whileInView='visible'
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
             className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-12'>
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                variants={itemVariants}
-                whileHover={{
-                  y: -5,
-                  transition: { duration: 0.2 },
-                }}
-                className='bg-[#026da7] backdrop-blur-md rounded-xl p-6 border-2 border-white/20 shadow-lg hover:border-[#4ade80]/40 transition-all duration-300'>
-                <div className='w-14 h-14 rounded-lg bg-[#4ade80]/20 flex items-center justify-center mb-4 border border-[#4ade80]/30'>
-                  <feature.icon className='w-7 h-7 text-[#4ade80]' />
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 + index * 0.1 }}
+                className='bg-[#0A1A2F]/80 backdrop-blur-md rounded-xl p-6 border border-white/20 shadow-lg'>
+                <div className='w-12 h-12 rounded-lg bg-[#FFD60A]/20 flex items-center justify-center mb-4'>
+                  <feature.icon className='w-6 h-6 text-[#FFD60A]' />
                 </div>
-                <h3 className='text-lg font-bold text-white mb-2'>
+                <h3 className='text-lg font-medium text-white mb-2'>
                   {feature.title}
                 </h3>
-                <p className='text-white'>{feature.description}</p>
-
-                {/* Decorative accent line */}
-                <div className='h-1 w-1/3 bg-gradient-to-r from-[#4ade80] to-transparent rounded-full mt-4'></div>
+                <p className='text-white/90'>{feature.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -175,26 +133,17 @@ export function CTA() {
             className='flex flex-col sm:flex-row items-center justify-center gap-4'>
             <Button
               size='lg'
-              className='w-full sm:w-auto bg-[#4ade80] hover:bg-[#4ade80]/90 text-[#0284c7] font-bold px-8 h-12 shadow-lg border-2 border-[#4ade80]/80 hover:scale-105 transition-transform duration-300 relative overflow-hidden group'
+              className='w-full sm:w-auto bg-[#FFD60A] hover:bg-[#FFD60A]/90 text-[#0A1A2F] font-medium px-8 h-12 shadow-lg'
               asChild>
               <Link href='/request-invite' className='inline-flex items-center'>
-                <span className='relative z-10'>Get Started</span>
-                <div className='relative z-10 ml-2 p-1 rounded-full bg-[#0284c7]/20 group-hover:bg-[#0284c7]/30 transition-colors duration-300'>
-                  <ExternalLink className='h-4 w-4' />
-                </div>
-                {/* Button background animation */}
-                <motion.div
-                  className='absolute inset-0 w-full h-full bg-[#22c55e] -z-10'
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
+                Get Started
+                <ArrowRight className='ml-2 h-4 w-4' />
               </Link>
             </Button>
             <Button
               size='lg'
               variant='outline'
-              className='w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border-2 border-white/20 hover:border-[#4ade80]/40 font-bold px-8 h-12 shadow-lg backdrop-blur-md hover:scale-105 transition-all duration-300'
+              className='w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/40 font-medium px-8 h-12 shadow-lg backdrop-blur-md'
               asChild>
               <Link href='/contact'>Contact Us</Link>
             </Button>

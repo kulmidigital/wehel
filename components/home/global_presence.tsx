@@ -76,7 +76,7 @@ const markers: Marker[] = [
 
 export function GlobalPresence() {
   return (
-    <section className='relative py-24 overflow-hidden bg-[#0284C7]'>
+    <section className='relative py-24 overflow-hidden'>
       {/* Decorative Gradient Orbs */}
       <div className='absolute inset-0 overflow-hidden'>
         {/* Top right gradient orb to blend with Mission section's bottom right */}
@@ -84,7 +84,7 @@ export function GlobalPresence() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ duration: 1 }}
-          className='absolute -top-32 -right-32 w-64 h-64 bg-[#38BDF8] rounded-full blur-[120px] opacity-30'
+          className='absolute -top-32 -right-32 w-64 h-64 bg-blue-400 rounded-full blur-[120px] opacity-20'
         />
       </div>
 
@@ -96,9 +96,9 @@ export function GlobalPresence() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}>
           <h2 className='text-3xl md:text-4xl font-medium text-white mb-4'>
-            Bridging <span className='text-[#4ADE80]'>Global Healthcare</span>
+            Bridging <span className='text-[#FFD60A]'>Global Healthcare</span>
           </h2>
-          <p className='text-white'>
+          <p className='text-white/60'>
             From our base in Kenya, we connect patients with world-class
             healthcare facilities in leading medical destinations
           </p>
@@ -106,7 +106,7 @@ export function GlobalPresence() {
 
         {/* Map Section */}
         <motion.div
-          className='relative mb-16 bg-[#0369A1] border border-white/20 rounded-xl p-4 overflow-hidden shadow-lg'
+          className='relative mb-16 bg-[#0A1A2F] border border-white/10 rounded-xl p-4 overflow-hidden'
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}>
@@ -130,8 +130,8 @@ export function GlobalPresence() {
                     <Geography
                       key={geo.rsmKey}
                       geography={geo}
-                      fill='#0F172A'
-                      stroke='#1E293B'
+                      fill='#1E293B'
+                      stroke='#334155'
                       strokeWidth={0.5}
                       style={{
                         default: { outline: "none" },
@@ -151,11 +151,10 @@ export function GlobalPresence() {
                     <Line
                       from={markers[0].coordinates}
                       to={marker.coordinates}
-                      stroke='#4ADE80'
+                      stroke='#FFD60A'
                       strokeWidth={1.5}
                       strokeLinecap='round'
                       strokeDasharray='2,4'
-                      strokeOpacity={0.8}
                     />
                     <motion.circle
                       initial={{ scale: 0 }}
@@ -179,7 +178,7 @@ export function GlobalPresence() {
                         repeatDelay: 2,
                       }}
                       r={1.5}
-                      fill='#4ADE80'
+                      fill='#FFD60A'
                       style={{ originX: "50%", originY: "50%" }}
                     />
                   </motion.g>
@@ -193,10 +192,9 @@ export function GlobalPresence() {
                     <Line
                       from={markers[0].coordinates}
                       to={marker.coordinates}
-                      stroke='#38BDF8'
+                      stroke='#FFD60A'
                       strokeWidth={1.5}
                       strokeLinecap='round'
-                      strokeOpacity={0.8}
                     />
                     <motion.circle
                       initial={{ scale: 0 }}
@@ -220,7 +218,7 @@ export function GlobalPresence() {
                         repeatDelay: 3,
                       }}
                       r={2}
-                      fill='#38BDF8'
+                      fill='#FFD60A'
                       style={{ originX: "50%", originY: "50%" }}
                     />
                   </motion.g>
@@ -232,18 +230,18 @@ export function GlobalPresence() {
                   <Marker coordinates={coordinates}>
                     <g transform='translate(-12, -24)'>
                       <motion.circle
-                        r={type === "base" ? 5 : type === "africa" ? 3 : 4}
+                        r={type === "base" ? 4 : type === "africa" ? 3 : 4}
                         cx={12}
                         cy={24}
                         fill={
                           type === "base"
-                            ? "#4ADE80"
+                            ? "#FFD60A"
                             : type === "africa"
-                            ? "#4ADE80"
-                            : "#38BDF8"
+                            ? "#FFD60A"
+                            : "#64748B"
                         }
                         opacity={
-                          type === "base" ? 1 : type === "africa" ? 0.9 : 0.8
+                          type === "base" ? 1 : type === "africa" ? 0.8 : 0.6
                         }
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
@@ -255,10 +253,10 @@ export function GlobalPresence() {
                       />
                       {type === "base" && (
                         <motion.circle
-                          r={10}
+                          r={8}
                           cx={12}
                           cy={24}
-                          fill='#4ADE80'
+                          fill='#FFD60A'
                           opacity={0.3}
                           initial={{ scale: 0 }}
                           animate={{
@@ -284,28 +282,23 @@ export function GlobalPresence() {
                             width={24}
                             height={20}
                             rx={4}
-                            fill={type === "base" ? "#0F172A" : "#0F172A"}
-                            strokeWidth={1.5}
+                            fill='#0A1A2F'
+                            strokeWidth={1}
                             stroke={
-                              type === "base"
-                                ? "#4ADE80"
-                                : type === "africa"
-                                ? "#4ADE80"
-                                : "#38BDF8"
+                              type === "base" || type === "africa"
+                                ? "#FFD60A"
+                                : "#64748B"
                             }
-                            opacity={type === "africa" ? 0.95 : 1}
+                            opacity={type === "africa" ? 0.9 : 1}
                           />
                           <text
                             x={12}
                             y={14}
                             fontSize={8}
-                            fontWeight='bold'
                             fill={
-                              type === "base"
-                                ? "#4ADE80"
-                                : type === "africa"
-                                ? "#4ADE80"
-                                : "#38BDF8"
+                              type === "base" || type === "africa"
+                                ? "#FFD60A"
+                                : "#64748B"
                             }
                             textAnchor='middle'>
                             {name}
@@ -329,22 +322,106 @@ export function GlobalPresence() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className='bg-[#0284C7] border border-white/20 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300'>
-              <region.icon className='w-8 h-8 text-[#4ADE80] mb-4' />
-              <h3 className='text-xl font-medium text-white mb-2'>
-                {region.name}
-              </h3>
-              <p className='text-white text-sm mb-4'>{region.description}</p>
-              <ul className='space-y-2'>
-                {region.highlights.map((highlight) => (
-                  <li
-                    key={highlight}
-                    className='flex items-center text-white text-sm'>
-                    <span className='w-2 h-2 rounded-full bg-[#4ADE80] mr-2' />
-                    {highlight}
-                  </li>
-                ))}
-              </ul>
+              whileHover={{ y: -8 }}
+              className='relative perspective-1000'>
+              <div className='relative h-full transform-style-3d transition-all duration-500 group-hover:rotate-y-3 group-hover:rotate-x-3'>
+                {/* Animated glow effect */}
+                <div
+                  className='absolute -inset-0.5 rounded-xl opacity-0 hover:opacity-100 blur-xl transition-all duration-500'
+                  style={{
+                    background:
+                      index === 0
+                        ? "linear-gradient(135deg, #FFD60A, #FF8A0A)"
+                        : index === 1
+                        ? "linear-gradient(135deg, #0AFFE7, #0A95FF)"
+                        : "linear-gradient(135deg, #0AFF95, #0AFF4F)",
+                  }}
+                />
+
+                <div className='relative bg-[#0A1A2F]/80 backdrop-blur-md border border-white/10 rounded-xl p-6 h-full hover:border-white/20 transition-all duration-300 shadow-xl shadow-black/50 group'>
+                  {/* Animated background pattern */}
+                  <div className='absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 rounded-xl overflow-hidden'>
+                    <div className='absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_25%,rgba(255,255,255,0.05)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.05)_75%)] bg-[length:24px_24px] animate-[pattern-shift_60s_linear_infinite]' />
+                  </div>
+
+                  <motion.div
+                    className='relative w-16 h-16 rounded-2xl flex items-center justify-center mb-6'
+                    style={{
+                      background:
+                        index === 0
+                          ? "linear-gradient(135deg, #FFD60A, #FF8A0A)"
+                          : index === 1
+                          ? "linear-gradient(135deg, #0AFFE7, #0A95FF)"
+                          : "linear-gradient(135deg, #0AFF95, #0AFF4F)",
+                    }}
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 10,
+                    }}>
+                    <motion.div
+                      animate={{
+                        rotate: [0, 5, 0, -5, 0],
+                        scale: [1, 1.05, 1, 1.05, 1],
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                      }}>
+                      <region.icon className='w-8 h-8 text-white drop-shadow-lg' />
+                    </motion.div>
+                  </motion.div>
+
+                  <h3 className='text-xl font-medium text-white mb-2 group-hover:text-[#FFD60A] transition-colors duration-300'>
+                    {region.name}
+                  </h3>
+
+                  <p className='text-white/70 text-sm mb-4 group-hover:text-white/90 transition-colors duration-300'>
+                    {region.description}
+                  </p>
+
+                  <ul className='space-y-3'>
+                    {region.highlights.map((highlight, highlightIndex) => (
+                      <motion.li
+                        key={highlight}
+                        className='flex items-center text-white/80 text-sm group/item'
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.3,
+                          delay: highlightIndex * 0.1,
+                        }}>
+                        <div className='relative mr-3 flex-shrink-0'>
+                          <div
+                            className='w-5 h-5 rounded-full flex items-center justify-center border border-white/20 shadow-sm group-hover/item:scale-110 transition-all duration-300'
+                            style={{
+                              background:
+                                index === 0
+                                  ? "linear-gradient(135deg, #FFD60A, #FF8A0A)"
+                                  : index === 1
+                                  ? "linear-gradient(135deg, #0AFFE7, #0A95FF)"
+                                  : "linear-gradient(135deg, #0AFF95, #0AFF4F)",
+                            }}>
+                            <motion.div
+                              initial={{ scale: 0 }}
+                              whileInView={{ scale: 1 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: highlightIndex * 0.2 }}
+                              className='w-1.5 h-1.5 bg-white rounded-full'
+                            />
+                          </div>
+                        </div>
+                        <span className='group-hover:text-white transition-colors duration-300 group-hover/item:font-medium'>
+                          {highlight}
+                        </span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

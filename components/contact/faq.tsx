@@ -36,48 +36,25 @@ const faqs = [
   },
 ];
 
-// Animation variants for staggered animations
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
-};
-
 export function FAQ() {
   return (
-    <section className='py-20 relative overflow-hidden bg-[#0284c7]'>
-      {/* Background Pattern */}
-      <div className='absolute inset-0 bg-[linear-gradient(60deg,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(-60deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20'></div>
-
-      <div className='container px-6 mx-auto relative'>
+    <section className='py-20 relative overflow-hidden'>
+      <div className='container px-6 mx-auto'>
         <div className='max-w-3xl mx-auto'>
           <div className='text-center mb-16'>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className='inline-flex items-center px-4 py-2 rounded-full bg-[#026da7] backdrop-blur-sm border-2 border-[#4ade80]/40 mb-8 shadow-lg'>
-              <span className='text-sm font-bold text-[#4ade80]'>FAQ</span>
+              className='inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8'>
+              <span className='text-sm text-[#FFD60A]'>FAQ</span>
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className='text-2xl md:text-3xl font-bold text-white mb-6'>
+              className='text-2xl md:text-3xl font-medium text-white mb-6'>
               Frequently Asked Questions
             </motion.h2>
             <motion.p
@@ -85,35 +62,31 @@ export function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className='text-lg text-white'>
+              className='text-lg text-white/60'>
               Find answers to common questions about our services and
               partnerships.
             </motion.p>
           </div>
 
           <motion.div
-            variants={containerVariants}
-            initial='hidden'
-            whileInView='visible'
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className='bg-[#026da7] backdrop-blur-sm border-2 border-white/20 rounded-2xl p-6 md:p-8 shadow-lg'>
+            transition={{ delay: 0.3 }}
+            className='bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8'>
             <Accordion type='single' collapsible className='space-y-4'>
               {faqs.map((faq, index) => (
-                <motion.div
+                <AccordionItem
                   key={index}
-                  variants={itemVariants}
-                  whileHover={{ x: 5, transition: { duration: 0.2 } }}>
-                  <AccordionItem
-                    value={`item-${index}`}
-                    className='border-white/20 data-[state=open]:border-[#4ade80]/40'>
-                    <AccordionTrigger className='text-white hover:text-[#4ade80] text-left font-medium'>
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className='text-white'>
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                </motion.div>
+                  value={`item-${index}`}
+                  className='border-white/10'>
+                  <AccordionTrigger className='text-white hover:text-[#FFD60A] text-left'>
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className='text-white/60'>
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
               ))}
             </Accordion>
           </motion.div>

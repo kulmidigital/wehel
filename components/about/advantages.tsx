@@ -98,73 +98,30 @@ const advantages = [
   },
 ];
 
-// Animation variants for staggered animations
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
-};
-
 export function Advantages() {
   return (
-    <section className='py-24 bg-[#0284c7] relative overflow-hidden'>
-      {/* Decorative Gradient Orbs */}
-      <div className='absolute inset-0 overflow-hidden'>
-        {/* Top right gradient orb */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
-          className='absolute -top-32 -right-32 w-64 h-64 bg-[#4ade80] rounded-full blur-[120px] opacity-30'
-        />
-        {/* Bottom left gradient orb */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
-          className='absolute -bottom-32 -left-32 w-64 h-64 bg-[#38bdf8] rounded-full blur-[120px] opacity-30'
-        />
-      </div>
-
-      {/* Background Pattern */}
-      <div className='absolute inset-0 bg-[linear-gradient(60deg,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(-60deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:40px_40px] opacity-25'></div>
-
-      <div className='container px-6 mx-auto relative'>
+    <section className='py-24'>
+      <div className='container px-6 mx-auto'>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className='max-w-3xl mx-auto text-center mb-16'>
-          <div className='inline-flex items-center px-4 py-2 rounded-full bg-[#026da7] backdrop-blur-sm border-2 border-[#4ade80]/40 mb-8 shadow-lg'>
-            <span className='text-sm font-bold text-[#4ade80]'>
-              The Wehel Advantage
-            </span>
+          <div className='inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-8'>
+            <span className='text-sm text-[#FFD60A]'>The Wehel Advantage</span>
           </div>
-          <h2 className='text-3xl md:text-4xl font-bold text-white mb-6'>
+          <h2 className='text-3xl md:text-4xl font-medium text-white mb-6'>
             Creating Value for All Stakeholders
           </h2>
-          <p className='text-lg text-white'>
+          <p className='text-lg text-white/60'>
             Our comprehensive approach ensures both patients and healthcare
             providers benefit from our global healthcare network.
           </p>
         </motion.div>
 
         {/* Advantages Grid */}
-        <div className='space-y-20'>
+        <div className='space-y-16'>
           {advantages.map((advantage, sectionIndex) => (
             <motion.div
               key={advantage.title}
@@ -179,64 +136,49 @@ export function Advantages() {
                   initial={{ opacity: 0, x: sectionIndex % 2 === 0 ? -20 : 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className='relative h-[400px] rounded-2xl overflow-hidden order-1 lg:order-none border-2 border-white/20 shadow-xl'>
+                  className='relative h-[400px] rounded-2xl overflow-hidden order-1 lg:order-none'>
                   <Image
                     src={advantage.image}
                     alt={advantage.title}
                     fill
                     className='object-cover'
                   />
-                  <div className='absolute inset-0 bg-gradient-to-t from-[#026da7] via-[#026da7]/70 to-transparent' />
-
-                  {/* Decorative pattern overlay */}
-                  <div className='absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(-45deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30' />
-
+                  <div className='absolute inset-0 bg-gradient-to-t from-[#0A1A2F] via-[#0A1A2F]/50 to-transparent' />
                   <div className='absolute bottom-0 left-0 right-0 p-8'>
-                    <div className='inline-flex items-center px-3 py-1 rounded-full bg-[#4ade80]/20 border border-[#4ade80]/40 mb-3'>
-                      <span className='text-sm font-bold text-[#4ade80]'>
-                        {advantage.title}
-                      </span>
+                    <div className='text-lg font-medium text-[#FFD60A] mb-2'>
+                      {advantage.title}
                     </div>
-                    <div className='text-2xl font-bold text-white mb-4'>
+                    <div className='text-2xl font-medium text-white mb-4'>
                       {advantage.subtitle}
                     </div>
-                    <p className='text-white'>{advantage.description}</p>
-
-                    {/* Decorative accent line */}
-                    <div className='h-1 w-1/3 bg-gradient-to-r from-[#4ade80] to-transparent rounded-full mt-4'></div>
+                    <p className='text-white/80'>{advantage.description}</p>
                   </div>
                 </motion.div>
 
                 {/* Benefits Grid */}
-                <motion.div
-                  variants={containerVariants}
-                  initial='hidden'
-                  whileInView='visible'
-                  viewport={{ once: true }}
-                  className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
                   {advantage.benefits.map((benefit, index) => (
                     <motion.div
                       key={benefit.title}
-                      variants={itemVariants}
-                      whileHover={{
-                        y: -5,
-                        transition: { duration: 0.2 },
-                      }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 + index * 0.1 }}
                       className='group'>
-                      <div className='bg-[#026da7] backdrop-blur-md rounded-xl p-6 border-2 border-white/20 h-full hover:border-[#4ade80]/40 transition-colors shadow-lg'>
-                        <div className='w-12 h-12 rounded-lg bg-[#4ade80]/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-[#4ade80]/30'>
-                          <benefit.icon className='w-6 h-6 text-[#4ade80]' />
+                      <div className='bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 h-full hover:border-[#FFD60A]/20 transition-colors'>
+                        <div className='w-10 h-10 rounded-lg bg-[#FFD60A]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform'>
+                          <benefit.icon className='w-5 h-5 text-[#FFD60A]' />
                         </div>
-                        <h3 className='text-lg font-bold text-white mb-2'>
+                        <h3 className='text-lg font-medium text-white mb-2'>
                           {benefit.title}
                         </h3>
-                        <p className='text-white text-sm'>
+                        <p className='text-white/60 text-sm'>
                           {benefit.description}
                         </p>
                       </div>
                     </motion.div>
                   ))}
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           ))}
